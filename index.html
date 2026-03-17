@@ -6,27 +6,17 @@
     <title>PMII Komfapsi - Pergerakan Mahasiswa Islam Indonesia</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
-        
-        /* Warna Khusus PMII */
         .bg-pmii-blue { background-color: #003399; }
         .bg-pmii-dark { background-color: #001b5e; }
         .bg-pmii-yellow { background-color: #FFD700; }
         .text-pmii-blue { color: #003399; }
         .text-pmii-dark { color: #001b5e; }
         .text-pmii-yellow { color: #FFD700; }
-        
-        /* Navigasi Tembus Pandang */
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px); 
-        }
-        
-        /* Agar saat klik menu, tidak tertutup navbar atas */
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
         section { scroll-margin-top: 6rem; }
     </style>
 </head>
@@ -35,7 +25,8 @@
     <nav class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                <a href="#beranda" class="flex items-center gap-4">
+                
+                <a href="#beranda" class="flex items-center gap-4 z-50">
                     <div class="w-12 h-12 bg-pmii-yellow rounded-xl flex items-center justify-center text-pmii-dark font-extrabold text-xl shadow-md">P</div>
                     <div>
                         <h1 class="font-bold text-xl leading-tight text-pmii-dark">PMII KOMFAPSI</h1>
@@ -43,22 +34,37 @@
                     </div>
                 </a>
 
+                <button id="mobile-menu-btn" class="md:hidden flex items-center p-2 text-gray-600 hover:text-pmii-blue focus:outline-none z-50">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
                 <div class="hidden md:flex space-x-10 items-center">
                     <a href="#beranda" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Beranda</a>
                     <a href="#profil" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Profil</a>
                     <a href="#kegiatan" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
-                    
                     <a href="login.html" class="bg-pmii-blue text-white px-6 py-2 rounded-full text-sm font-bold hover:opacity-90 transition shadow-lg">
                         Portal Kader
                     </a>
                 </div>
             </div>
         </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Beranda</a>
+                <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Profil</a>
+                <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Kegiatan</a>
+                <a href="login.html" class="bg-pmii-blue text-white px-6 py-3 rounded-xl text-center font-bold shadow-md">
+                    Portal Kader
+                </a>
+            </div>
+        </div>
     </nav>
 
     <section id="beranda" class="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-blue-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
-            
             <div>
                 <div class="inline-flex items-center px-4 py-2 rounded-full bg-white border border-blue-200 text-pmii-blue text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
                     Selamat Datang di Portal Resmi
@@ -72,17 +78,14 @@
                     Menjadi episentrum pergerakan mahasiswa Fakultas Psikologi UIN Syarif Hidayatullah Jakarta yang adaptif, kolaboratif, dan berlandaskan nilai Islam Ahlussunnah wal Jama'ah.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#profil" class="bg-pmii-yellow text-pmii-dark px-8 py-3 rounded-full font-bold hover:bg-yellow-400 transition shadow-md">
+                    <a href="#profil" class="bg-pmii-yellow text-pmii-dark px-8 py-3 rounded-full font-bold hover:bg-yellow-400 transition shadow-md inline-block">
                         Gabung MAPABA
                     </a>
                 </div>
             </div>
-
             <div class="hidden lg:block relative">
                 <div class="h-96 bg-gray-200 rounded-3xl overflow-hidden shadow-2xl border-8 border-white flex items-center justify-center">
-                    <p class="text-gray-400 font-medium text-center px-4">
-                        [Foto Kegiatan Komfapsi]
-                    </p>
+                    <p class="text-gray-400 font-medium text-center px-4">[Foto Kegiatan Komfapsi]</p>
                 </div>
             </div>
         </div>
@@ -91,20 +94,17 @@
     <section id="profil" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="bg-pmii-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
-                
-                <div class="lg:w-2/5 relative bg-gray-800 flex items-center justify-center min-h-full p-12">
+                <div class="lg:w-2/5 relative bg-gray-800 flex items-center justify-center min-h-[300px] p-12">
                     <div class="text-center text-gray-400">
                        <span class="text-4xl mb-4 block">📸</span>
-                       <span>[Foto Profil Sahabat Felix]</span>
+                       <span>[Foto Profil Felix]</span>
                     </div>
                 </div>
-
-                <div class="lg:w-3/5 p-10 lg:p-16 text-white">
+                <div class="lg:w-3/5 p-8 lg:p-16 text-white">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-6">Membangun Ekosistem Pergerakan Berbasis Keilmuan.</h2>
                     <p class="text-blue-100 text-lg mb-8 leading-relaxed font-light">
                         "Di era digital, tantangan kita bukan lagi sekadar retorika, melainkan bagaimana merekonstruksi pemikiran dan menghadirkan solusi konkret. Website ini adalah langkah nyata Komfapsi untuk menciptakan ruang kolaborasi, pendokumentasian sejarah, dan literasi psikologi yang berwawasan kebangsaan."
                     </p>
-                    
                     <div>
                         <p class="text-pmii-yellow font-bold text-xl tracking-wide">Felix</p>
                         <p class="text-blue-200 text-sm font-medium uppercase mt-1">Ketua PMII Komisariat Fakultas Psikologi</p>
@@ -118,7 +118,6 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 class="text-3xl lg:text-4xl font-bold text-pmii-dark mb-4">Kegiatan Komfapsi</h2>
             <p class="text-gray-600 mb-12">Dokumentasi pergerakan dan aktivitas kader PMII Komisariat Fakultas Psikologi.</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl shadow-md p-6 text-left border border-gray-100">
                     <div class="h-48 bg-gray-200 rounded-xl mb-4 flex items-center justify-center text-gray-400">Foto Kajian</div>
@@ -137,8 +136,8 @@
     </section>
 
     <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-3">
                 <div class="w-8 h-8 bg-pmii-yellow rounded-lg flex items-center justify-center text-pmii-dark font-bold text-sm">P</div>
                 <span class="font-bold text-white tracking-wider">KOMFAPSI</span>
             </div>
@@ -146,5 +145,22 @@
         </div>
     </footer>
 
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        // Buka/Tutup menu saat tombol garis tiga diklik
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Otomatis tutup menu saat salah satu link diklik (biar layarnya gak ketutupan terus)
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
