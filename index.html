@@ -68,7 +68,7 @@
                     </button>
                 </div>
 
-                <div class="hidden md:flex space-x-8 items-center">
+                <div id="desktop-nav-links" class="hidden md:flex space-x-8 items-center">
                     <a href="#beranda" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Beranda</a>
                     <a href="#profil" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Profil</a>
                     <a href="#kegiatan" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
@@ -87,7 +87,7 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="flex flex-col px-6 py-4 space-y-4">
+            <div id="mobile-nav-links" class="flex flex-col px-6 py-4 space-y-4">
                 <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Beranda</a>
                 <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Profil</a>
                 <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Kegiatan</a>
@@ -229,7 +229,6 @@
         const darkIcons = document.querySelectorAll('.theme-toggle-dark-icon');
         const lightIcons = document.querySelectorAll('.theme-toggle-light-icon');
 
-        // Cek pengaturan sebelumnya dari perangkat pengguna
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.body.classList.add('dark-mode');
             lightIcons.forEach(icon => icon.classList.remove('hidden'));
@@ -237,13 +236,10 @@
             darkIcons.forEach(icon => icon.classList.remove('hidden'));
         }
 
-        // Fungsi saat tombol bulan/matahari diklik
         function toggleTheme() {
-            // Ganti Ikon
             darkIcons.forEach(icon => icon.classList.toggle('hidden'));
             lightIcons.forEach(icon => icon.classList.toggle('hidden'));
 
-            // Ganti Warna Body
             if (document.body.classList.contains('dark-mode')) {
                 document.body.classList.remove('dark-mode');
                 localStorage.setItem('color-theme', 'light');
@@ -253,8 +249,26 @@
             }
         }
 
-        themeToggleDesktop.addEventListener('click', toggleTheme);
-        themeToggleMobile.addEventListener('click', toggleTheme);
-    </script>
-</body>
-</html>
+        if(themeToggleDesktop) themeToggleDesktop.addEventListener('click', toggleTheme);
+        if(themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // 3. LOGIKA PENGECEKAN LOGIN
+        const desktopNav = document.getElementById('desktop-nav-links');
+        const mobileNav = document.getElementById('mobile-nav-links');
+
+        function checkLoginStatus() {
+            // Mengecek apakah ada data sesi login di penyimpanan browser
+            const namaKader = localStorage.getItem('namaKader');
+            const usernameKader = localStorage.getItem('usernameKader');
+
+            if (namaKader && usernameKader) {
+                // JIKA SUDAH LOGIN: Ubah Menu Navigasi
+                
+                // Navigasi Desktop (Tambahkan Ganti Password & Tombol Keluar)
+                desktopNav.innerHTML = `
+                    <a href="#beranda" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Beranda</a>
+                    <a href="#profil" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Profil</a>
+                    <a href="#kegiatan" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
+                    <a href="struktur.html" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Struktur</a>
+                    
+                    <a href="ganti-password.html" class="text-sm font-semibold text-pmii
