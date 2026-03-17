@@ -88,6 +88,32 @@
     </footer>
 
     <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzS9x7myhLD9kUn0ZHGZtyShHBiTx0NjJcLsvlcswai3FGb6MswfTxmj8DoRJhVnQF1/exec'
+    const form = document.getElementById('mapabaForm')
+    const btn = document.getElementById('submitBtn')
+    const msg = document.getElementById('successMessage')
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        btn.disabled = true
+        btn.innerHTML = "Sedang Mengirim..."
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                btn.classList.add('hidden')
+                msg.classList.remove('hidden')
+                form.reset()
+                console.log('Success!', response)
+            })
+            .catch(error => {
+                btn.disabled = false
+                btn.innerHTML = "Kirim Pendaftaran"
+                alert('Waduh, ada error nih! Coba lagi ya Sahabat.')
+                console.error('Error!', error.message)
+            })
+    })
+</script>
+
         const form = document.getElementById('mapabaForm');
         const btn = document.getElementById('submitBtn');
         const msg = document.getElementById('successMessage');
