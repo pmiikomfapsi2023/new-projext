@@ -3,91 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMII Komfapsi - Komisariat Fakultas Psikologi</title>
+    <title>PMII Komfapsi - Pergerakan Mahasiswa Islam Indonesia</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        pmii: { blue: '#003399', dark: '#001b5e', yellow: '#FFD700', light: '#f4f7fe' }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Efek bayangan cahaya untuk tombol */
+        .glow-effect:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+        /* Animasi masuk sederhana */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+    </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800">
+<body class="bg-pmii-light text-slate-800 antialiased selection:bg-pmii-yellow selection:text-pmii-dark">
 
-    <nav class="fixed w-full bg-blue-900 text-white z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-blue-900 font-bold">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                
+                <div class="flex items-center gap-4 group cursor-pointer">
+                    <div class="w-12 h-12 bg-gradient-to-br from-pmii-yellow to-yellow-500 rounded-xl flex items-center justify-center text-pmii-dark font-extrabold text-xl shadow-md group-hover:rotate-12 transition-transform duration-300">
                         P
                     </div>
-                    <span class="font-bold text-xl tracking-wider">PMII KOMFAPSI</span>
+                    <div>
+                        <h1 class="font-bold text-xl leading-tight text-pmii-dark tracking-tight">PMII KOMFAPSI</h1>
+                        <p class="text-xs text-slate-500 font-medium">Fakultas Psikologi</p>
+                    </div>
                 </div>
-                <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#beranda" class="hover:text-yellow-400 transition">Beranda</a>
-                    <a href="#profil" class="hover:text-yellow-400 transition">Profil</a>
+
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="#beranda" class="text-sm font-semibold text-slate-600 hover:text-pmii-blue transition">Beranda</a>
+                    <a href="#profil" class="text-sm font-semibold text-slate-600 hover:text-pmii-blue transition">Profil</a>
+                    <a href="#kegiatan" class="text-sm font-semibold text-slate-600 hover:text-pmii-blue transition">Kegiatan</a>
+                    
+                    <a href="#" class="bg-pmii-blue text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-pmii-dark transition-all duration-300 shadow-lg hover:shadow-pmii-blue/30 flex items-center gap-2">
+                        Portal Kader
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
-                <a href="#" class="bg-yellow-400 text-blue-900 px-5 py-2 rounded-full font-bold hover:bg-yellow-300 transition shadow-lg shadow-yellow-400/30">
-                    Login Kader
-                </a>
             </div>
         </div>
     </nav>
 
-    <section id="beranda" class="pt-28 pb-20 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                Merawat Tradisi, <br />
-                <span class="text-yellow-400">Merekonstruksi Psikologi</span>
-            </h1>
-            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mb-10">
-                Wadah pergerakan mahasiswa Fakultas Psikologi untuk mengembangkan keilmuan, spiritualitas Islam Ahlussunnah wal Jama'ah, dan kepekaan sosial.
-            </p>
-            <div class="flex gap-4">
-                <a href="#" class="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition shadow-xl">
-                    Daftar MAPABA
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 -mt-10 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center hover:-translate-y-2 transition duration-300">
-                <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-2">Dzikir</h3>
-                <p class="text-slate-600">Mengingat Allah dalam setiap langkah pergerakan dan aktivitas akademis.</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center hover:-translate-y-2 transition duration-300">
-                <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-2">Fikir</h3>
-                <p class="text-slate-600">Berpikir kritis, analitis, dan mengembangkan diskursus keilmuan psikologi.</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 text-center hover:-translate-y-2 transition duration-300">
-                <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-2">Amal Saleh</h3>
-                <p class="text-slate-600">Mengimplementasikan ilmu untuk kebermanfaatan umat dan masyarakat.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="profil" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/3">
-                <div class="aspect-[3/4] bg-slate-200 rounded-3xl overflow-hidden shadow-2xl relative flex items-center justify-center">
-                    <span class="text-slate-400 font-medium">[Foto Sahabat Felix]</span>
+    <section id="beranda" class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100 via-pmii-light to-white opacity-70"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="animate-fade-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-pmii-blue text-xs font-bold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-pmii-yellow animate-pulse"></span>
+                    Selamat Datang di Portal Resmi
                 </div>
-            </div>
-            <div class="w-full md:w-2/3">
-                <h2 class="text-3xl font-bold text-blue-900 mb-4">Sambutan Ketua Komisariat</h2>
-                <div class="w-20 h-1 bg-yellow-400 mb-6"></div>
-                <p class="text-lg text-slate-700 mb-6 leading-relaxed">
-                    "Selamat datang di portal resmi PMII Komisariat Fakultas Psikologi. Di era digital ini, kami menyadari bahwa pergerakan tidak hanya terjadi di jalanan atau ruang kelas, tetapi juga di dunia maya. Website ini adalah langkah maju komfapsi untuk menjadi ekosistem yang adaptif, kolaboratif, dan progresif."
+                <h1 class="text-5xl lg:text-7xl font-extrabold text-pmii-dark leading-[1.1] mb-6 tracking-tight">
+                    Intelektual <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pmii-blue to-blue-400">Progresif,</span><br/>
+                    Spiritual Kuat.
+                </h1>
+                <p class="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
+                    Menjadi episentrum pergerakan mahasiswa Fakultas Psikologi UIN Syarif Hidayatullah Jakarta yang adaptif, kolaboratif, dan berlandaskan nilai Islam Ahlussunnah wal Jama'ah.
                 </p>
-                <div>
-                    <p class="font-bold text-xl text-blue-900">Sahabat Felix</p>
-                    <p class="text-slate-500">Ketua PMII Komfapsi</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="bg-pmii-yellow text-pmii-dark px-8 py-3.5 rounded-full font-bold hover:bg-yellow-400 transition glow-effect">
+                        Gabung MAPABA
+                    </a>
+                    <a href="#profil" class="px-8 py-3.5 rounded-full font-bold text-pmii-blue hover:bg-blue-50 transition border border-transparent hover:border-blue-100">
+                        Kenali Kami &darr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative hidden lg:block animate-fade-up" style="animation-delay: 0.2s;">
+                <div class="absolute -inset-4 bg-gradient-to-tr from-pmii-yellow/20 to-pmii-blue/20 rounded-[3rem] blur-2xl"></div>
+                <div class="relative aspect-square bg-slate-200 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white flex items-center justify-center">
+                    <p class="text-slate-400 font-medium text-center px-4">
+                        [Masukkan Foto Estetik Kegiatan Komfapsi atau Gedung Fakultas Psikologi]
+                    </p>
+                </div>
+                
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-xl">✓</div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-semibold">Status Pendaftaran</p>
+                        <p class="text-sm font-bold text-pmii-dark">MAPABA Dibuka</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
-        <p>&copy; 2026 PMII Komisariat Fakultas Psikologi. All Rights Reserved.</p>
+    <section id="profil" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="bg-pmii-dark rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                
+                <div class="lg:w-2/5 relative bg-slate-800 min-h-[400px]">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 p-8 text-center bg-slate-200">
+                       <span class="text-4xl mb-4">📸</span>
+                       <span>[Foto Profil Profesional Sahabat Felix]</span>
+                    </div>
+                </div>
+
+                <div class="lg:w-3/5 p-10 lg:p-16 flex flex-col justify-center text-white">
+                    <svg class="w-12 h-12 text-pmii-yellow mb-6 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6 leading-tight">Membangun Ekosistem Pergerakan Berbasis Keilmuan.</h2>
+                    <p class="text-blue-100 text-lg mb-8 leading-relaxed font-light">
+                        "Di era digital, tantangan kita bukan lagi sekadar retorika, melainkan bagaimana merekonstruksi pemikiran dan menghadirkan solusi konkret. Website ini adalah langkah nyata Komfapsi untuk menciptakan ruang kolaborasi, pendokumentasian sejarah, dan literasi psikologi yang berwawasan kebangsaan."
+                    </p>
+                    
+                    <div>
+                        <p class="text-pmii-yellow font-bold text-xl tracking-wide">Felix</p>
+                        <p class="text-blue-200 text-sm font-medium uppercase tracking-widest mt-1">Ketua PMII Komisariat Fakultas Psikologi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-pmii-yellow rounded-lg flex items-center justify-center text-pmii-dark font-bold text-sm">P</div>
+                <span class="font-bold text-white tracking-wider">KOMFAPSI</span>
+            </div>
+            <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi. All Rights Reserved.</p>
+        </div>
     </footer>
 
 </body>
