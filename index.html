@@ -68,7 +68,7 @@
                     </button>
                 </div>
 
-                <div id="desktop-nav-links" class="hidden md:flex space-x-8 items-center">
+                <div class="hidden md:flex space-x-8 items-center">
                     <a href="#beranda" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Beranda</a>
                     <a href="#profil" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Profil</a>
                     <a href="#kegiatan" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
@@ -87,7 +87,7 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div id="mobile-nav-links" class="flex flex-col px-6 py-4 space-y-4">
+            <div class="flex flex-col px-6 py-4 space-y-4">
                 <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Beranda</a>
                 <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Profil</a>
                 <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Kegiatan</a>
@@ -100,128 +100,100 @@
         </div>
     </nav>
 
-    <div id="landing-page-content">
-        <section id="beranda" class="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-blue-50 transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-white border border-blue-200 text-pmii-blue text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-                        Selamat Datang di Portal Resmi
-                    </div>
-                    <h1 class="text-5xl lg:text-6xl font-extrabold text-pmii-dark leading-tight mb-6">
-                       Bermakna <br/>
-                        <span class="text-pmii-blue">Berdampak,</span><br/>
-                        Adaptif.
-                    </h1>
-                    <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-                        Menjadi episentrum Pergerakan Mahasiswa Islam Indonesia Komisariat Fakultas Psikologi yang adaptif, kolaboratif, dan berlandaskan nilai Islam Ahlussunnah wal Jama'ah.
-                    </p>
-                    <div class="flex gap-4">
-                        <a href="daftar.html" class="bg-pmii-yellow text-pmii-dark px-8 py-3 rounded-full font-bold hover:opacity-90 transition shadow-md inline-block">
-                            Gabung MAPABA
-                        </a>
-                    </div>
+    <section id="beranda" class="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-blue-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-white border border-blue-200 text-pmii-blue text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+                    Selamat Datang di Portal Resmi
                 </div>
-                
-                <div class="hidden lg:block relative">
-                    <div class="h-[450px] bg-gray-200 rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Mahasiswa" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="profil" class="py-24 bg-white relative transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12">
-                <div class="bg-pmii-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-gray-800">
-                    
-                    <div class="lg:w-2/5 relative bg-gradient-to-t from-[#001b5e] to-[#003399] min-h-[450px] flex items-end justify-center overflow-hidden">
-                        <div class="absolute w-64 h-64 bg-pmii-yellow rounded-full mix-blend-overlay opacity-30 top-10 left-10"></div>
-                        <div class="absolute w-40 h-40 border-4 border-white/20 rounded-full bottom-10 -right-10"></div>
-                        <img src="Gelix.png" 
-                             alt="Felix Haris Rumangu - Ketua Umum PMII KOMFAPSI 2025-2026" 
-                             class="relative z-10 w-full max-w-[320px] h-auto object-contain object-bottom drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] scale-110">
-                    </div>
-                    
-                    <div class="lg:w-3/5 p-8 lg:p-16 text-white relative z-10 flex flex-col justify-center">
-                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">Membangun Ekosistem Pergerakan Berbasis Keilmuan.</h2>
-                        <p class="text-blue-100 text-lg mb-8 leading-relaxed font-light">
-                            "Di era digital, tantangan kita bukan lagi sekadar retorika, melainkan bagaimana merekonstruksi pemikiran dan menghadirkan solusi konkret. Website ini adalah langkah nyata Komfapsi untuk menciptakan ruang kolaborasi, pendokumentasian sejarah, dan literasi psikologi yang berwawasan kebangsaan."
-                        </p>
-                        <div>
-                            <p class="text-pmii-yellow font-bold text-2xl tracking-wide">Felix Haris Rumangu</p>
-                            <p class="text-blue-200 text-sm font-medium uppercase mt-1 tracking-widest">Ketua Umum PMII KOMFAPSI 
-                                2025-2026</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="kegiatan" class="py-24 bg-gray-50 relative transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-                <h2 class="text-3xl lg:text-4xl font-bold text-pmii-dark mb-4">KABAR KOMFAPSI</h2>
-                <p class="text-gray-600 mb-12">Dokumentasi pergerakan dan aktivitas kader PMII Komisariat Fakultas Psikologi.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <a href="artikel-1.html" class="block bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                        <div class="h-48 bg-gray-200 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                                <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Selengkapnya</span>
-                            </div>
-                        </div>
-                        <div class="p-6 text-left border-t border-gray-100">
-                            <p class="text-xs text-pmii-blue font-bold uppercase mb-2">17 Maret 2026</p>
-                            <h3 class="font-bold text-lg text-gray-800 mb-2 leading-snug group-hover:text-pmii-blue transition-colors">Kajian Psikologi & Islam: Dekonstruksi Teori Barat</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Membenturkan hegemoni teori-teori psikologi Barat dengan pandangan Islam tentang jiwa manusia...</p>
-                        </div>
-                    </a>
-
-                    <a href="artikel-pelantikan.html" class="block bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                        <div class="h-48 bg-gray-200 overflow-hidden relative">
-                            <img src="Pelantikan.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                                <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Liputan</span>
-                            </div>
-                        </div>
-                        <div class="p-6 text-left border-t border-gray-100">
-                            <p class="text-xs text-pmii-blue font-bold uppercase mb-2">7 Februari 2026</p>
-                            <h3 class="font-bold text-lg text-gray-800 mb-2 leading-snug group-hover:text-pmii-blue transition-colors">Sah! Felix Haris Resmi Nahkodai PMII Komfapsi</h3>
-                            <p class="text-sm text-gray-500 line-clamp-2">Prosesi pelantikan pengurus baru Masa Khidmah 2025-2026 berjalan dengan khidmat dan membawa visi pergerakan baru.</p>
-                        </div>
+                <h1 class="text-5xl lg:text-6xl font-extrabold text-pmii-dark leading-tight mb-6">
+                   Bermakna <br/>
+                    <span class="text-pmii-blue">Berdampak,</span><br/>
+                    Adaptif.
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+                    Menjadi episentrum Pergerakan Mahasiswa Islam Indonesia Komisariat Fakultas Psikologi yang adaptif, kolaboratif, dan berlandaskan nilai Islam Ahlussunnah wal Jama'ah.
+                </p>
+                <div class="flex gap-4">
+                    <a href="daftar.html" class="bg-pmii-yellow text-pmii-dark px-8 py-3 rounded-full font-bold hover:opacity-90 transition shadow-md inline-block">
+                        Gabung MAPABA
                     </a>
                 </div>
             </div>
-        </section>
-    </div>
-
-    <div id="dashboard-page-content" class="hidden pt-32 pb-24 px-6 lg:px-12 max-w-7xl mx-auto min-h-[60vh]">
-        <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-            <h2 class="text-3xl font-bold text-pmii-dark mb-2">Selamat Datang, <span id="user-name-display" class="text-pmii-blue">Sahabat</span>!</h2>
-            <p class="text-gray-500 mb-8 tracking-wide uppercase text-sm font-bold">Portal Utama Kader Komfapsi</p>
             
-            <div class="mt-8 bg-gray-50 rounded-2xl p-6 border border-gray-200 max-w-md">
-                <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
-                    <span class="mr-2">⚙️</span> Ganti Password
-                </h3>
-                <form id="formGantiPassword" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Password Lama</label>
-                        <input type="password" id="oldPass" required class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-pmii-blue focus:ring-1 focus:ring-pmii-blue">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Password Baru</label>
-                        <input type="password" id="newPass" required class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-pmii-blue focus:ring-1 focus:ring-pmii-blue">
-                    </div>
-                    <button type="submit" id="btnGantiPass" class="bg-pmii-dark text-white px-6 py-3 rounded-xl font-bold w-full hover:bg-pmii-blue transition shadow-md mt-2">
-                        Simpan Password Baru
-                    </button>
-                    <p id="pesanSandi" class="text-sm font-bold text-center hidden mt-4"></p>
-                </form>
+            <div class="hidden lg:block relative">
+                <div class="h-[450px] bg-gray-200 rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Kegiatan Mahasiswa" class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
+    </section>
+
+    <section id="profil" class="py-24 bg-white relative transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="bg-pmii-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-gray-800">
+                
+                <div class="lg:w-2/5 relative bg-gradient-to-t from-[#001b5e] to-[#003399] min-h-[450px] flex items-end justify-center overflow-hidden">
+                    
+                    <div class="absolute w-64 h-64 bg-pmii-yellow rounded-full mix-blend-overlay opacity-30 top-10 left-10"></div>
+                    <div class="absolute w-40 h-40 border-4 border-white/20 rounded-full bottom-10 -right-10"></div>
+                    
+                    <img src="Gelix.png" 
+                         alt="Felix Haris Rumangu - Ketua Umum PMII KOMFAPSI 2025-2026" 
+                         class="relative z-10 w-full max-w-[320px] h-auto object-contain object-bottom drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] scale-110">
+                </div>
+                
+                <div class="lg:w-3/5 p-8 lg:p-16 text-white relative z-10 flex flex-col justify-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Membangun Ekosistem Pergerakan Berbasis Keilmuan.</h2>
+                    <p class="text-blue-100 text-lg mb-8 leading-relaxed font-light">
+                        "Di era digital, tantangan kita bukan lagi sekadar retorika, melainkan bagaimana merekonstruksi pemikiran dan menghadirkan solusi konkret. Website ini adalah langkah nyata Komfapsi untuk menciptakan ruang kolaborasi, pendokumentasian sejarah, dan literasi psikologi yang berwawasan kebangsaan."
+                    </p>
+                    <div>
+                        <p class="text-pmii-yellow font-bold text-2xl tracking-wide">Felix Haris Rumangu</p>
+                        <p class="text-blue-200 text-sm font-medium uppercase mt-1 tracking-widest">Ketua Umum PMII KOMFAPSI 
+                            2025-2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kegiatan" class="py-24 bg-gray-50 relative transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold text-pmii-dark mb-4">KABAR KOMFAPSI</h2>
+            <p class="text-gray-600 mb-12">Dokumentasi pergerakan dan aktivitas kader PMII Komisariat Fakultas Psikologi.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="artikel-1.html" class="block bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div class="h-48 bg-gray-200 overflow-hidden relative">
+        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Selengkapnya</span>
+        </div>
     </div>
+    <div class="p-6 text-left border-t border-gray-100">
+        <p class="text-xs text-pmii-blue font-bold uppercase mb-2">17 Maret 2026</p>
+        <h3 class="font-bold text-lg text-gray-800 mb-2 leading-snug group-hover:text-pmii-blue transition-colors">Kajian Psikologi & Islam: Dekonstruksi Teori Barat</h3>
+        <p class="text-sm text-gray-500 line-clamp-2">Membenturkan hegemoni teori-teori psikologi Barat dengan pandangan Islam tentang jiwa manusia...</p>
+    </div>
+</a>
+
+                <a href="artikel-pelantikan.html" class="block bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div class="h-48 bg-gray-200 overflow-hidden relative">
+        <img src="Pelantikan.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Liputan</span>
+        </div>
+    </div>
+    <div class="p-6 text-left border-t border-gray-100">
+        <p class="text-xs text-pmii-blue font-bold uppercase mb-2">7 Februari 2026</p>
+        <h3 class="font-bold text-lg text-gray-800 mb-2 leading-snug group-hover:text-pmii-blue transition-colors">Sah! Felix Haris Resmi Nahkodai PMII Komfapsi</h3>
+        <p class="text-sm text-gray-500 line-clamp-2">Prosesi pelantikan pengurus baru Masa Khidmah 2025-2026 berjalan dengan khidmat dan membawa visi pergerakan baru.</p>
+    </div>
+</a>
+
+    </section>
 
     <footer class="bg-gray-900 text-gray-400 py-12">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
@@ -236,9 +208,6 @@
     </footer>
 
     <script>
-        // MASUKKAN URL GOOGLE APPS SCRIPT-MU DI DALAM TANDA KUTIP DI BAWAH INI
-        const urlScriptSandi = 'https://script.google.com/macros/s/AKfycbzkRf-oOrzjhNnDhvtBK3iNrDw-FKpHiRJKcFgj0c0bRkiH5zNxfUgi-N1ESvTGdOTbXw/exec';
-
         // 1. Logika Menu Mobile (Hamburger)
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
@@ -260,6 +229,7 @@
         const darkIcons = document.querySelectorAll('.theme-toggle-dark-icon');
         const lightIcons = document.querySelectorAll('.theme-toggle-light-icon');
 
+        // Cek pengaturan sebelumnya dari perangkat pengguna
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.body.classList.add('dark-mode');
             lightIcons.forEach(icon => icon.classList.remove('hidden'));
@@ -267,10 +237,13 @@
             darkIcons.forEach(icon => icon.classList.remove('hidden'));
         }
 
+        // Fungsi saat tombol bulan/matahari diklik
         function toggleTheme() {
+            // Ganti Ikon
             darkIcons.forEach(icon => icon.classList.toggle('hidden'));
             lightIcons.forEach(icon => icon.classList.toggle('hidden'));
 
+            // Ganti Warna Body
             if (document.body.classList.contains('dark-mode')) {
                 document.body.classList.remove('dark-mode');
                 localStorage.setItem('color-theme', 'light');
@@ -282,113 +255,6 @@
 
         themeToggleDesktop.addEventListener('click', toggleTheme);
         themeToggleMobile.addEventListener('click', toggleTheme);
-
-        // 3. LOGIKA CEK LOGIN & DASHBOARD
-        const landingPage = document.getElementById('landing-page-content');
-        const dashboardPage = document.getElementById('dashboard-page-content');
-        const desktopNav = document.getElementById('desktop-nav-links');
-        const mobileNav = document.getElementById('mobile-nav-links');
-
-        function checkLoginStatus() {
-            const namaKader = localStorage.getItem('namaKader');
-            const usernameKader = localStorage.getItem('usernameKader');
-
-            if (namaKader && usernameKader) {
-                // Tampilkan Dashboard, sembunyikan Landing Page
-                landingPage.classList.add('hidden');
-                dashboardPage.classList.remove('hidden');
-                
-                // Tambahkan nama ke teks sambutan
-                document.getElementById('user-name-display').innerText = namaKader;
-
-                // Modifikasi Navigasi Desktop
-                desktopNav.innerHTML = `
-                    <a href="index.html" class="text-sm font-semibold text-pmii-blue transition">Dashboard</a>
-                    <a href="struktur.html" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Struktur</a>
-                    
-                    <button id="theme-toggle-desktop-new" class="p-2 text-gray-500 hover:text-pmii-blue transition rounded-full hover:bg-gray-100">
-                        <svg class="theme-toggle-dark-icon w-5 h-5 ${document.body.classList.contains('dark-mode') ? 'hidden' : ''}" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <svg class="theme-toggle-light-icon w-5 h-5 text-yellow-500 ${document.body.classList.contains('dark-mode') ? '' : 'hidden'}" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-                    </button>
-
-                    <button onclick="logoutKader()" class="bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-red-600 transition shadow-lg">Keluar</button>
-                `;
-                document.getElementById('theme-toggle-desktop-new').addEventListener('click', toggleTheme);
-
-                // Modifikasi Navigasi Mobile
-                mobileNav.innerHTML = `
-                    <a href="index.html" class="mobile-link text-base font-semibold text-pmii-blue">Dashboard</a>
-                    <a href="struktur.html" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Struktur</a>
-                    <button onclick="logoutKader()" class="bg-red-500 text-white px-6 py-3 rounded-xl text-center font-bold shadow-md w-full mt-4">Keluar</button>
-                `;
-            } else {
-                landingPage.classList.remove('hidden');
-                dashboardPage.classList.add('hidden');
-            }
-        }
-
-        function logoutKader() {
-            localStorage.removeItem('namaKader');
-            localStorage.removeItem('usernameKader');
-            window.location.reload(); // Muat ulang halaman ke versi Beranda
-        }
-
-        // Jalankan pengecekan saat halaman selesai dimuat
-        window.addEventListener('DOMContentLoaded', checkLoginStatus);
-
-        // 4. LOGIKA GANTI PASSWORD
-        const formGanti = document.getElementById('formGantiPassword');
-        if(formGanti) {
-            formGanti.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const btn = document.getElementById('btnGantiPass');
-                const pesan = document.getElementById('pesanSandi');
-                const oldPass = document.getElementById('oldPass').value;
-                const newPass = document.getElementById('newPass').value;
-                const userKader = localStorage.getItem('usernameKader');
-
-                btn.disabled = true;
-                btn.innerText = "Menyimpan...";
-                pesan.classList.add('hidden');
-
-                // Siapkan data untuk Google Apps Script
-                const formData = new URLSearchParams();
-                formData.append('action', 'change_password');
-                formData.append('username', userKader);
-                formData.append('old_password', oldPass);
-                formData.append('new_password', newPass);
-
-                fetch(urlScriptSandi, { 
-                    method: 'POST', 
-                    body: formData,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    pesan.classList.remove('hidden');
-                    if(data.status === 'success') {
-                        pesan.innerText = "✅ " + data.message;
-                        pesan.classList.remove('text-red-500');
-                        pesan.classList.add('text-green-600');
-                        formGanti.reset();
-                    } else {
-                        pesan.innerText = "❌ " + data.message;
-                        pesan.classList.remove('text-green-600');
-                        pesan.classList.add('text-red-500');
-                    }
-                    btn.disabled = false;
-                    btn.innerText = "Simpan Password Baru";
-                })
-                .catch(error => {
-                    pesan.innerText = "❌ Koneksi terputus. Coba lagi.";
-                    pesan.classList.remove('hidden');
-                    pesan.classList.remove('text-green-600');
-                    pesan.classList.add('text-red-500');
-                    btn.disabled = false;
-                    btn.innerText = "Simpan Password Baru";
-                });
-            });
-        }
     </script>
 </body>
 </html>
