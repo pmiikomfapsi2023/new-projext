@@ -26,11 +26,13 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center h-20">
                 
-                <a href="#beranda" class="flex items-center gap-4 z-50">
-                    <div class="w-12 h-12 bg-pmii-yellow rounded-xl flex items-center justify-center text-pmii-dark font-extrabold text-xl shadow-md">P</div>
+                <a href="#beranda" class="flex items-center gap-4 z-50 group">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md p-1.5 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Logo_PMII.png" alt="Logo PMII" class="w-full h-full object-contain">
+                    </div>
                     <div>
-                        <h1 class="font-bold text-xl leading-tight text-pmii-dark">PMII KOMFAPSI</h1>
-                        <p class="text-xs text-gray-500 font-medium">Fakultas Psikologi</p>
+                        <h1 class="font-extrabold text-xl leading-tight text-pmii-dark tracking-tight">PMII KOMFAPSI</h1>
+                        <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Fakultas Psikologi</p>
                     </div>
                 </a>
 
@@ -138,8 +140,10 @@
     <footer class="bg-gray-900 text-gray-400 py-12">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start gap-3">
-                <div class="w-8 h-8 bg-pmii-yellow rounded-lg flex items-center justify-center text-pmii-dark font-bold text-sm">P</div>
-                <span class="font-bold text-white tracking-wider">KOMFAPSI</span>
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md p-1.5">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Logo_PMII.png" alt="Logo PMII" class="w-full h-full object-contain">
+                </div>
+                <span class="font-extrabold text-white tracking-widest uppercase">KOMFAPSI</span>
             </div>
             <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi.</p>
         </div>
@@ -150,12 +154,10 @@
         const menu = document.getElementById('mobile-menu');
         const links = document.querySelectorAll('.mobile-link');
 
-        // Buka/Tutup menu saat tombol garis tiga diklik
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
 
-        // Otomatis tutup menu saat salah satu link diklik (biar layarnya gak ketutupan terus)
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
