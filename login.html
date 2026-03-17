@@ -86,7 +86,7 @@
                 <p class="text-gray-500">Silakan masuk menggunakan akun Portal Kader Anda.</p>
             </div>
 
-            <form class="space-y-6" action="#" method="POST">
+            <form id="loginForm" class="space-y-6">
                 
                 <div>
                     <label for="identitas" class="block text-sm font-semibold text-gray-700 mb-2">Email atau NPM</label>
@@ -121,7 +121,9 @@
                     </label>
                 </div>
 
-                <button type="submit" 
+                <p id="error-message" class="text-red-500 text-sm font-semibold hidden"></p>
+
+                <button id="submitBtn" type="submit" 
                     class="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg shadow-blue-900/20 text-sm font-bold text-white bg-pmii-blue hover:bg-pmii-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pmii-blue transform transition-all duration-200 hover:-translate-y-0.5">
                     Masuk ke Portal
                 </button>
@@ -130,7 +132,7 @@
             <div class="mt-8 pt-6 border-t border-gray-100 text-center">
                 <p class="text-sm text-gray-500">
                     Belum punya akun? <br class="sm:hidden">
-                    <a href="#" class="font-bold text-pmii-blue hover:text-pmii-dark transition ml-1">Daftar MAPABA sekarang</a>
+                    <a href="daftar.html" class="font-bold text-pmii-blue hover:text-pmii-dark transition ml-1">Daftar MAPABA sekarang</a>
                 </p>
                 <div class="mt-4">
                     <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-400 hover:text-gray-600 transition">
@@ -143,5 +145,55 @@
         </div>
     </div>
 
+    <script>
+        // MASUKKAN URL GOOGLE APPS SCRIPT-MU DI DALAM TANDA KUTIP DI BAWAH INI
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzFwJiV7R-L_lK85KCE7Tncogf-2HiXklP3Hwty_CdwhAmLL-JkiEyhILFOFHpr6CdYiw/exec';
+        
+        const loginForm = document.getElementById('loginForm');
+        const btn = document.getElementById('submitBtn');
+        const errorMsg = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+            
+            // Mengambil input dari user
+            const user = document.getElementById('identitas').value;
+            const pass = document.getElementById('password').value;
+
+            // Mengubah tampilan tombol saat loading
+            btn.disabled = true;
+            btn.innerHTML = "Memverifikasi...";
+            errorMsg.classList.add('hidden');
+
+            // Menyusun URL pengiriman data ke Google Sheets
+            const url = `${scriptURL}?action=login&username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`;
+
+            // Mengirim request ke Google Apps Script
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    // Berhasil Login: Simpan nama DAN username di penyimpanan browser
+                    localStorage.setItem('namaKader', data.nama);
+                    localStorage.setItem('usernameKader', data.username); // Wajib untuk ganti password nanti
+                    
+                    // Arahkan kembali ke file index.html (Dashboard)
+                    window.location.href = 'index.html';
+                } else {
+                    // Gagal Login
+                    errorMsg.innerText = data.message;
+                    errorMsg.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.innerHTML = "Masuk ke Portal";
+                }
+            })
+            .catch(error => {
+                errorMsg.innerText = "Koneksi terputus. Pastikan internetmu stabil.";
+                errorMsg.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = "Masuk ke Portal";
+            });
+        });
+    </script>
 </body>
 </html>
