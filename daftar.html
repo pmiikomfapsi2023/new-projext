@@ -112,24 +112,6 @@
                 console.error('Error!', error.message)
             })
     })
-</script>
-
-        const form = document.getElementById('mapabaForm');
-        const btn = document.getElementById('submitBtn');
-        const msg = document.getElementById('successMessage');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.innerHTML = "Mengirim...";
-            btn.disabled = true;
-
-            // Simulasi pengiriman (Nanti ganti dengan URL Google Apps Script)
-            setTimeout(() => {
-                form.reset();
-                btn.classList.add('hidden');
-                msg.classList.remove('hidden');
-            }, 2000);
-        });
     </script>
 </body>
 </html>
