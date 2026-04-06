@@ -259,6 +259,7 @@
         const darkIcons = document.querySelectorAll('.theme-toggle-dark-icon');
         const lightIcons = document.querySelectorAll('.theme-toggle-light-icon');
 
+        // Mengatur tema awal sesuai preferensi pengguna sebelumnya
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.body.classList.add('dark-mode');
             lightIcons.forEach(icon => icon.classList.remove('hidden'));
@@ -266,6 +267,7 @@
             darkIcons.forEach(icon => icon.classList.remove('hidden'));
         }
 
+        // Fungsi untuk mengganti tema saat tombol diklik
         function toggleTheme() {
             darkIcons.forEach(icon => icon.classList.toggle('hidden'));
             lightIcons.forEach(icon => icon.classList.toggle('hidden'));
@@ -277,6 +279,14 @@
                 document.body.classList.add('dark-mode');
                 localStorage.setItem('color-theme', 'dark');
             }
+        }
+
+        // 3. EVENT LISTENER: Ini yang bikin tombol merespons saat diklik
+        if (themeToggleDesktop) {
+            themeToggleDesktop.addEventListener('click', toggleTheme);
+        }
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
         }
     </script>
 </body>
