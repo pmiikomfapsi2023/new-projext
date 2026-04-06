@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="id" style="scroll-behavior: smooth;">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TYM0X97K5K"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYM0X97K5K"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -136,8 +135,9 @@
                     Menjadi episentrum Pergerakan Mahasiswa Islam Indonesia Komisariat Fakultas Psikologi yang adaptif, kolaboratif, dan berlandaskan nilai Islam Ahlussunnah wal Jama'ah.
                 </p>
                 <div class="flex gap-4">
-                    <a href="daftar.html" class="bg-pmii-yellow text-pmii-dark px-8 py-3 rounded-full font-bold hover:opacity-90 transition shadow-md inline-block">
-                        Gabung MAPABA
+                    <a href="proker.html" class="bg-pmii-yellow text-pmii-dark px-8 py-3 rounded-full font-bold hover:opacity-90 transition shadow-md inline-flex items-center gap-2 group">
+                        <span>Program Kerja</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
             </div>
@@ -278,79 +278,6 @@
                 localStorage.setItem('color-theme', 'dark');
             }
         }
-
-        // 3. LOGIKA PENGECEKAN LOGIN & UBAH MENU
-        function checkLoginStatus() {
-            // Ambil data dari memory browser
-            const namaKader = localStorage.getItem('namaKader');
-            const desktopNav = document.getElementById('desktop-nav-links');
-            const mobileNav = document.getElementById('mobile-nav-links');
-
-            // JIKA NAMA KADER ADA (BERARTI SUDAH LOGIN)
-            if (namaKader) {
-                // Ubah Menu Navigasi Desktop
-                if (desktopNav) {
-                    desktopNav.innerHTML = `
-                        <a href="#beranda" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Beranda</a>
-                        <a href="#profil" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Profil</a>
-                        <a href="#kegiatan" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
-                        <a href="struktur.html" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Struktur</a>
-                        <a href="kabar.html" class="text-sm font-semibold text-gray-600 hover:text-pmii-blue transition">Kabar Komfapsi</a>
-                        
-                        <a href="ganti-password.html" class="text-sm font-semibold text-pmii-blue border-b-2 border-pmii-blue pb-1 transition">Ganti Password</a>
-                        
-                        <button id="theme-toggle-desktop-new" class="p-2 text-gray-500 hover:text-pmii-blue transition rounded-full hover:bg-gray-100">
-                            <svg class="theme-toggle-dark-icon w-5 h-5 ${document.body.classList.contains('dark-mode') ? 'hidden' : ''}" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                            <svg class="theme-toggle-light-icon w-5 h-5 text-yellow-500 ${document.body.classList.contains('dark-mode') ? '' : 'hidden'}" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-                        </button>
-
-                        <button onclick="logoutKader()" class="bg-red-500 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-red-600 transition shadow-lg flex items-center gap-2">
-                            <span>Keluar</span>
-                            <span class="font-normal text-xs opacity-75 border-l border-red-400 pl-2 ml-1 hidden lg:inline-block">${namaKader.split(' ')[0]}</span>
-                        </button>
-                    `;
-                    // Aktifkan ulang tombol dark mode yang baru dibuat
-                    document.getElementById('theme-toggle-desktop-new').addEventListener('click', toggleTheme);
-                }
-
-                // Ubah Menu Navigasi Mobile (HP)
-                if (mobileNav) {
-                    mobileNav.innerHTML = `
-                        <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Beranda</a>
-                        <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Profil</a>
-                        <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Kegiatan</a>
-                        <a href="struktur.html" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Struktur</a>
-                        <a href="kabar.html" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Kabar Komfapsi</a>
-                        
-                        <div class="h-px bg-gray-100 my-2"></div>
-                        
-                        <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Akun: ${namaKader.split(' ')[0]}</p>
-                        <a href="ganti-password.html" class="mobile-link text-base font-semibold text-pmii-blue">Ganti Password</a>
-                        
-                        <button onclick="logoutKader()" class="bg-red-500 text-white px-6 py-3 rounded-xl text-center font-bold shadow-md w-full mt-2">Keluar Aplikasi</button>
-                    `;
-                    // Tambahkan fungsi tutup menu HP otomatis jika link diklik
-                    document.querySelectorAll('.mobile-link').forEach(link => {
-                        link.addEventListener('click', () => { menu.classList.add('hidden'); });
-                    });
-                }
-            } else {
-                // JIKA BELUM LOGIN: Pastikan tombol Dark Mode berjalan normal
-                if(themeToggleDesktop) themeToggleDesktop.addEventListener('click', toggleTheme);
-                if(themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
-            }
-        }
-
-        // Fungsi Tombol Keluar
-        function logoutKader() {
-            localStorage.removeItem('namaKader');
-            localStorage.removeItem('usernameKader');
-            // Hard refresh halaman
-            window.location.replace(window.location.href); 
-        }
-
-        // Panggil fungsi pengecekan saat halaman terbuka
-        window.addEventListener('DOMContentLoaded', checkLoginStatus);
     </script>
 </body>
 </html>
