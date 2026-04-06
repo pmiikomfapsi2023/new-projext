@@ -103,9 +103,11 @@
                         <svg class="theme-toggle-light-icon hidden w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
                     </button>
 
-                    <a href="login" class="bg-pmii-blue text-white px-6 py-2 rounded-full text-sm font-bold hover:opacity-90 transition shadow-lg">
-                        Portal Kader
-                    </a>
+                    <div id="auth-desktop-container">
+                        <a href="login" class="bg-pmii-blue text-white px-6 py-2 rounded-full text-sm font-bold hover:opacity-90 transition shadow-lg block">
+                            Portal Kader
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,9 +120,11 @@
                 <a href="struktur" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Struktur</a>
                 <a href="kabar" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Berita</a>
                 
-                <a href="login" class="bg-pmii-blue text-white px-6 py-3 rounded-xl text-center font-bold shadow-md">
-                    Portal Kader
-                </a>
+                <div id="auth-mobile-container" class="mt-2">
+                    <a href="login" class="bg-pmii-blue text-white px-6 py-3 rounded-xl text-center font-bold shadow-md block w-full">
+                        Portal Kader
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -318,7 +322,7 @@
                         <img src="Untitled design.png" alt="AI" class="w-full h-full object-contain">
                     </div>
                     <div>
-                        <h4 class="font-bold text-sm leading-tight">Asisten Virtual</h4>
+                        <h4 class="font-bold text-sm leading-tight">Senior Virtual</h4>
                         <p class="text-[10px] text-blue-200 uppercase tracking-widest font-semibold">Online | AI Komfapsi</p>
                     </div>
                 </div>
@@ -350,7 +354,7 @@
         const chatContent = document.getElementById('chat-content');
 
         // 1. GANTI URL INI dengan URL Web App dari Google Apps Script kamu yang BARU!
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyTgONMOTv2n4N6fWlgPvsQRv4cKirpoqVKjgUoqNlSGddejKv8cj1QlsPf_VmiIflP/exec";
+        const WEB_APP_URL = "URL_WEB_APP_KAMU_DI_SINI";
 
         // Buka/Tutup Chat
         if (chatToggle && chatWindow && closeChat) {
@@ -410,6 +414,58 @@
                 chatContent.scrollTop = chatContent.scrollHeight;
             }, 50);
             return id;
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mengecek apakah ada data pengguna yang login di Local Storage
+            // CATATAN: Jika nama variabel saat login berbeda (misal: 'nama', 'username', dll), silakan ganti tulisan 'user_nama' di bawah ini
+            const namaUser = localStorage.getItem('user_nama') || localStorage.getItem('nama') || localStorage.getItem('username'); 
+            
+            if (namaUser) {
+                // 1. Ubah tombol di Desktop
+                const authDesktop = document.getElementById('auth-desktop-container');
+                if (authDesktop) {
+                    authDesktop.innerHTML = `
+                        <div class="relative group">
+                            <button class="bg-blue-50 text-pmii-blue px-4 py-2 rounded-full text-sm font-bold border border-blue-200 flex items-center gap-2 transition hover:bg-blue-100">
+                                Halo, Sahabat ${namaUser}
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 hidden group-hover:block border border-gray-100 z-50">
+                                <a href="ganti-password" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-pmii-blue transition">Ganti Password</a>
+                                <button onclick="logoutKader()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition">Keluar</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // 2. Ubah tombol di Mobile
+                const authMobile = document.getElementById('auth-mobile-container');
+                if (authMobile) {
+                    authMobile.innerHTML = `
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex flex-col gap-3 shadow-sm">
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">Masuk sebagai:</p>
+                                <p class="font-bold text-pmii-blue text-sm">Sahabat ${namaUser}</p>
+                            </div>
+                            <div class="border-t border-blue-200/50 pt-3 flex flex-col gap-2">
+                                <a href="ganti-password" class="bg-white text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold text-center border border-gray-200 hover:bg-gray-50 transition w-full shadow-sm">Ganti Password</a>
+                                <button onclick="logoutKader()" class="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm font-semibold text-center hover:bg-red-100 transition w-full shadow-sm">Keluar</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        });
+
+        // Fungsi Keluar / Logout
+        function logoutKader() {
+            // Menghapus data dari memory browser
+            localStorage.clear(); 
+            // Refresh halaman ke wujud awal
+            window.location.reload();
         }
     </script>
 </body>
