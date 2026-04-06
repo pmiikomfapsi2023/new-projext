@@ -310,30 +310,30 @@
             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
         </button>
 
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[320px] md:w-[380px] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 origin-bottom-right">
-            <div class="bg-pmii-dark p-4 text-white flex justify-between items-center shrink-0">
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[320px] md:w-[380px] h-[400px] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 origin-bottom-right">
+            <div class="bg-pmii-dark p-4 text-white flex justify-between items-center flex-shrink-0">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-white rounded-full p-1 shrink-0">
+                    <div class="w-10 h-10 bg-white rounded-full p-1 flex-shrink-0">
                         <img src="Untitled design.png" alt="AI" class="w-full h-full object-contain">
                     </div>
                     <div>
-                        <h4 class="font-bold text-sm leading-tight">Asisten Virtual</h4>
+                        <h4 class="font-bold text-sm leading-tight">Senior Virtual</h4>
                         <p class="text-[10px] text-blue-200 uppercase tracking-widest font-semibold">Online | AI Komfapsi</p>
                     </div>
                 </div>
                 <button id="close-chat" class="text-white opacity-70 hover:opacity-100"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
 
-            <div id="chat-content" class="h-[55vh] md:h-[350px] overflow-y-auto p-4 space-y-4 bg-gray-50 text-sm">
+            <div id="chat-content" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 text-sm" style="-webkit-overflow-scrolling: touch; touch-action: pan-y;">
                 <div class="bg-blue-100 text-pmii-dark p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm">
                     Selamat datang, Sahabat! Saya adalah Asisten AI PMII Komfapsi. Ada yang bisa saya bantu terkait pergerakan atau keilmuan psikologi?
                 </div>
             </div>
 
-            <div class="p-3 border-t border-gray-100 bg-white shrink-0">
+            <div class="p-3 border-t border-gray-100 bg-white flex-shrink-0">
                 <form id="chat-form" class="flex gap-2">
                     <input type="text" id="chat-input" placeholder="Tanya sesuatu..." class="flex-grow px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-pmii-blue text-sm border-none text-gray-800">
-                    <button type="submit" class="bg-pmii-blue text-white p-2 rounded-full hover:bg-pmii-dark transition shrink-0">
+                    <button type="submit" class="bg-pmii-blue text-white p-2 rounded-full hover:bg-pmii-dark transition flex-shrink-0">
                         <svg class="w-5 h-5 transform rotate-90" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
                     </button>
                 </form>
@@ -403,7 +403,10 @@
                 div.innerText = text;
             }
             chatContent.appendChild(div);
-            chatContent.scrollTop = chatContent.scrollHeight;
+            // PENTING: Autoscroll ke bawah saat ada pesan baru
+            setTimeout(() => {
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }, 50);
             return id;
         }
     </script>
