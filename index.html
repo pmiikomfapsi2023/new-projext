@@ -114,7 +114,7 @@
             <div id="mobile-nav-links" class="flex flex-col px-6 py-4 space-y-4">
                 <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Beranda</a>
                 <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Profil</a>
-                <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Kegiatan</a>
+                <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
                 <a href="struktur" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Struktur</a>
                 <a href="kabar" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Berita</a>
                 
@@ -310,10 +310,10 @@
             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
         </button>
 
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] md:w-[400px] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 scale-95 origin-bottom-right">
-            <div class="bg-pmii-dark p-5 text-white flex justify-between items-center">
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[320px] md:w-[380px] max-h-[75vh] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 origin-bottom-right">
+            <div class="bg-pmii-dark p-4 text-white flex justify-between items-center shrink-0">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-white rounded-full p-1">
+                    <div class="w-10 h-10 bg-white rounded-full p-1 shrink-0">
                         <img src="Untitled design.png" alt="AI" class="w-full h-full object-contain">
                     </div>
                     <div>
@@ -324,16 +324,16 @@
                 <button id="close-chat" class="text-white opacity-70 hover:opacity-100"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
 
-            <div id="chat-content" class="h-[350px] overflow-y-auto p-5 space-y-4 bg-gray-50 text-sm">
+            <div id="chat-content" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 text-sm min-h-[250px]">
                 <div class="bg-blue-100 text-pmii-dark p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm">
                     Selamat datang, Sahabat! Saya adalah Asisten AI PMII Komfapsi. Ada yang bisa saya bantu terkait pergerakan atau keilmuan psikologi?
                 </div>
             </div>
 
-            <div class="p-4 border-t border-gray-100 bg-white">
+            <div class="p-3 border-t border-gray-100 bg-white shrink-0">
                 <form id="chat-form" class="flex gap-2">
                     <input type="text" id="chat-input" placeholder="Tanya sesuatu..." class="flex-grow px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-pmii-blue text-sm border-none text-gray-800">
-                    <button type="submit" class="bg-pmii-blue text-white p-2 rounded-full hover:bg-pmii-dark transition">
+                    <button type="submit" class="bg-pmii-blue text-white p-2 rounded-full hover:bg-pmii-dark transition shrink-0">
                         <svg class="w-5 h-5 transform rotate-90" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
                     </button>
                 </form>
@@ -350,7 +350,7 @@
         const chatInput = document.getElementById('chat-input');
         const chatContent = document.getElementById('chat-content');
 
-        // 1. GANTI URL INI dengan URL Web App dari Google Apps Script kamu!
+        // 1. GANTI URL INI dengan URL Web App dari Google Apps Script kamu yang BARU!
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzilKVhClxj-alqA7Bt8JXdIIokB2-g0_8JNOS974R0iSduxtpVnQlO_eInYu-ERNqU/exec";
 
         // Buka/Tutup Chat
@@ -395,10 +395,10 @@
             const id = 'msg-' + Date.now();
             const div = document.createElement('div');
             if (sender === 'user') {
-                div.className = 'bg-pmii-blue text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] shadow-md';
+                div.className = 'bg-pmii-blue text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[85%] shadow-md whitespace-pre-wrap';
                 div.innerText = text;
             } else {
-                div.className = 'bg-blue-100 text-pmii-dark p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm text-gray-800';
+                div.className = 'bg-blue-100 text-pmii-dark p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm text-gray-800 whitespace-pre-wrap';
                 div.id = id;
                 div.innerText = text;
             }
