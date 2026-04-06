@@ -419,9 +419,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mengecek apakah ada data pengguna yang login di Local Storage
-            // CATATAN: Jika nama variabel saat login berbeda (misal: 'nama', 'username', dll), silakan ganti tulisan 'user_nama' di bawah ini
-            const namaUser = localStorage.getItem('user_nama') || localStorage.getItem('nama') || localStorage.getItem('username'); 
+            // Mengecek data kader di Local Storage yang dikirim dari file login.html
+            // Kuncinya sekarang diubah menjadi 'namaKader' menyesuaikan login.html
+            const namaUser = localStorage.getItem('namaKader'); 
             
             if (namaUser) {
                 // 1. Ubah tombol di Desktop
