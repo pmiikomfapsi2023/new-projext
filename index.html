@@ -428,14 +428,16 @@
                 const authDesktop = document.getElementById('auth-desktop-container');
                 if (authDesktop) {
                     authDesktop.innerHTML = `
-                        <div class="relative group">
-                            <button class="bg-blue-50 text-pmii-blue px-4 py-2 rounded-full text-sm font-bold border border-blue-200 flex items-center gap-2 transition hover:bg-blue-100">
+                        <div class="relative group" onclick="const menu = document.getElementById('desktop-dropdown'); menu.classList.toggle('hidden');">
+                            <button class="bg-blue-50 text-pmii-blue px-4 py-2 rounded-full text-sm font-bold border border-blue-200 flex items-center gap-2 transition hover:bg-blue-100 focus:outline-none cursor-pointer">
                                 Halo, Sahabat ${namaUser}
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 hidden group-hover:block border border-gray-100 z-50">
-                                <a href="ganti-password" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-pmii-blue transition">Ganti Password</a>
-                                <button onclick="logoutKader()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition">Keluar</button>
+                            <div id="desktop-dropdown" class="absolute right-0 top-full pt-2 w-48 hidden group-hover:block z-50">
+                                <div class="bg-white rounded-xl shadow-lg py-2 border border-gray-100">
+                                    <a href="ganti-password" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-pmii-blue transition">Ganti Password</a>
+                                    <button onclick="logoutKader()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition">Keluar</button>
+                                </div>
                             </div>
                         </div>
                     `;
