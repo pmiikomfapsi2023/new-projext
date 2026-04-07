@@ -1,1 +1,32 @@
+body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        
+/* Warna Dasar PMII */
+.bg-pmii-blue { background-color: #003399; }
+.bg-pmii-dark { background-color: #001b5e; }
+.bg-pmii-yellow { background-color: #FFD700; }
+.text-pmii-blue { color: #003399; }
+.text-pmii-dark { color: #001b5e; }
+.text-pmii-yellow { color: #FFD700; }
 
+.glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+section { scroll-margin-top: 5rem; }
+
+/* =========================================
+   SISTEM DARK MODE (MODE GELAP)
+   ========================================= */
+body.dark-mode { background-color: #0f172a; color: #f8fafc; }
+body.dark-mode .bg-white { background-color: #1e293b !important; border-color: #334155 !important; }
+body.dark-mode .bg-gray-50, body.dark-mode .bg-blue-50 { background-color: #0f172a !important; }
+body.dark-mode .text-gray-800, body.dark-mode .text-gray-900 { color: #f8fafc !important; }
+body.dark-mode .text-gray-600, body.dark-mode .text-gray-500 { color: #cbd5e1 !important; }
+body.dark-mode .glass-nav { background: rgba(15, 23, 42, 0.95) !important; border-color: #334155 !important; }
+body.dark-mode .border-gray-200, body.dark-mode .border-gray-100 { border-color: #334155 !important; }
+body.dark-mode .shadow-md, body.dark-mode .shadow-sm, body.dark-mode .shadow-2xl { box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important; }
+
+/* Pengecualian agar tombol dan elemen warna PMII tetap menyala di Dark Mode */
+body.dark-mode .bg-pmii-blue, body.dark-mode .bg-pmii-yellow, body.dark-mode .bg-pmii-dark { color: #ffffff; }
+body.dark-mode .bg-pmii-yellow { color: #001b5e; }
+
+/* REVISI WARNA TEKS AGAR TERBACA DI DARK MODE */
+body.dark-mode .text-pmii-dark { color: #f8fafc !important; }
+body.dark-mode .text-pmii-blue { color: #93c5fd !important; }
