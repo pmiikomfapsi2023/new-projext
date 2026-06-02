@@ -609,7 +609,7 @@ body.dark-mode .hero-info-card {
 }
 
 /* =========================================================
-   PROFILE - SUDAH DIPATCH BIAR FOTO KETUA UMUM PAS
+   PROFILE - FOTO KETUA UMUM SUDAH DINAIKKAN
    ========================================================= */
 .profile-section {
     background: var(--bg-section);
@@ -636,14 +636,14 @@ body.dark-mode .hero-info-card {
     align-items: flex-end;
     justify-content: center;
     background:
-        radial-gradient(circle at center 42%, rgba(255, 215, 0, 0.20), transparent 28%),
+        radial-gradient(circle at center 39%, rgba(255, 215, 0, 0.20), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.08));
 }
 
 .profile-ring {
     position: absolute;
     left: 50%;
-    top: 43%;
+    top: 39%;
     transform: translate(-50%, -50%);
     border-radius: 999px;
     pointer-events: none;
@@ -667,7 +667,7 @@ body.dark-mode .hero-info-card {
     height: 170px;
     border-radius: 999px;
     left: 50%;
-    top: 43%;
+    top: 39%;
     transform: translate(-50%, -50%);
     background: rgba(255, 215, 0, 0.18);
     filter: blur(16px);
@@ -677,10 +677,10 @@ body.dark-mode .hero-info-card {
     position: absolute;
     z-index: 3;
     left: 50%;
-    bottom: 0;
+    bottom: 72px;
     transform: translateX(-50%);
-    width: 82%;
-    max-width: 355px;
+    width: 84%;
+    max-width: 365px;
     height: auto;
     object-fit: contain;
     object-position: bottom center;
@@ -1292,6 +1292,7 @@ body.dark-mode .mobile-user-box {
     .profile-person-img {
         width: 72%;
         max-width: 330px;
+        bottom: 48px;
     }
 
     .profile-text-area {
@@ -1361,6 +1362,7 @@ body.dark-mode .mobile-user-box {
     .profile-person-img {
         width: 78%;
         max-width: 290px;
+        bottom: 34px;
     }
 
     .profile-text-area {
@@ -1441,6 +1443,7 @@ body.dark-mode .mobile-user-box {
     .profile-person-img {
         width: 82%;
         max-width: 260px;
+        bottom: 28px;
     }
 
     .profile-text-area h2 {
