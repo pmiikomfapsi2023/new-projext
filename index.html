@@ -23,457 +23,74 @@
     <link rel="icon" type="image/png" href="Untitled design.png">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        :root {
-            --pmii-blue: #003399;
-            --pmii-blue-soft: #eaf1ff;
-            --pmii-dark: #06133d;
-            --pmii-dark-2: #001b5e;
-            --pmii-yellow: #ffd33d;
-            --pmii-cream: #fff8dc;
+        body { font-family: 'Inter', sans-serif; }
+        .hero-grid {
+            background-image:
+                linear-gradient(to right, rgba(148,163,184,.10) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148,163,184,.10) 1px, transparent 1px);
+            background-size: 44px 44px;
         }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .text-pmii-blue { color: var(--pmii-blue); }
-        .text-pmii-dark { color: var(--pmii-dark); }
-        .text-pmii-yellow { color: var(--pmii-yellow); }
-        .bg-pmii-blue { background-color: var(--pmii-blue); }
-        .bg-pmii-dark { background-color: var(--pmii-dark); }
-        .bg-pmii-yellow { background-color: var(--pmii-yellow); }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .nav-link-modern {
+        .nav-link {
             position: relative;
-            color: #4b5563;
-            font-size: 0.875rem;
-            font-weight: 700;
-            transition: color .25s ease;
         }
-
-        .nav-link-modern::after {
-            content: "";
+        .nav-link::after {
+            content: '';
             position: absolute;
             left: 0;
             bottom: -8px;
             width: 0;
             height: 2px;
-            border-radius: 999px;
-            background: var(--pmii-blue);
-            transition: width .25s ease;
+            border-radius: 9999px;
+            background: currentColor;
+            transition: width .3s ease;
         }
-
-        .nav-link-modern:hover {
-            color: var(--pmii-blue);
-        }
-
-        .nav-link-modern:hover::after {
+        .nav-link:hover::after {
             width: 100%;
         }
-
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at 78% 18%, rgba(0, 51, 153, 0.16), transparent 32%),
-                radial-gradient(circle at 12% 70%, rgba(255, 211, 61, 0.28), transparent 30%),
-                linear-gradient(135deg, #f8fbff 0%, #ffffff 48%, #fff9df 100%);
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            opacity: .35;
-            background-image:
-                linear-gradient(rgba(0, 51, 153, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 51, 153, 0.08) 1px, transparent 1px);
-            background-size: 44px 44px;
-            mask-image: linear-gradient(to bottom, black, transparent 78%);
-            -webkit-mask-image: linear-gradient(to bottom, black, transparent 78%);
-            pointer-events: none;
-        }
-
-        .blur-blob {
-            position: absolute;
-            border-radius: 999px;
-            filter: blur(48px);
-            opacity: .45;
-            pointer-events: none;
-        }
-
-        .blob-blue {
-            width: 360px;
-            height: 360px;
-            top: -120px;
-            right: -90px;
-            background: #7fb3ff;
-        }
-
-        .blob-yellow {
-            width: 300px;
-            height: 300px;
-            bottom: 40px;
-            left: -110px;
-            background: #ffe178;
-        }
-
-        .section-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .55rem 1rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid rgba(0, 51, 153, .14);
-            color: var(--pmii-blue);
-            font-size: .72rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: .12em;
-            box-shadow: 0 12px 35px rgba(0, 27, 94, .08);
-        }
-
-        .section-eyebrow::before {
-            content: "";
-            width: .55rem;
-            height: .55rem;
-            border-radius: 999px;
-            background: var(--pmii-yellow);
-            box-shadow: 0 0 0 6px rgba(255, 211, 61, .2);
-        }
-
-        .hero-title {
-            letter-spacing: -0.06em;
-        }
-
-        .hero-highlight {
-            background: linear-gradient(90deg, var(--pmii-blue), #235dff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .btn-modern {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: .65rem;
-            min-height: 48px;
-            padding: .9rem 1.35rem;
-            border-radius: 999px;
-            font-weight: 900;
-            transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease, background .25s ease;
-        }
-
-        .btn-modern:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn-primary-modern {
-            color: var(--pmii-dark);
-            background: var(--pmii-yellow);
-            box-shadow: 0 18px 45px rgba(255, 211, 61, .32);
-        }
-
-        .btn-secondary-modern {
-            color: var(--pmii-blue);
-            background: rgba(255, 255, 255, .82);
-            border: 1px solid rgba(0, 51, 153, .14);
-            box-shadow: 0 18px 45px rgba(0, 27, 94, .08);
-        }
-
-        .stat-card {
-            padding: 1rem;
-            border-radius: 1.35rem;
-            background: rgba(255, 255, 255, .72);
-            border: 1px solid rgba(0, 51, 153, .10);
-            box-shadow: 0 18px 45px rgba(0, 27, 94, .06);
-        }
-
-        .hero-logo-stage {
-            position: relative;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-logo-stage::before {
-            content: "";
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            border-radius: 999px;
-            background: linear-gradient(145deg, rgba(0, 51, 153, .15), rgba(255, 211, 61, .35));
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,.6);
-        }
-
-        .hero-logo-stage::after {
-            content: "";
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 51, 153, .12);
-            animation: spin-soft 16s linear infinite;
-        }
-
-        .hero-logo-card {
-            position: absolute;
-            left: 0;
-            bottom: 64px;
-            padding: 1rem 1.1rem;
-            border-radius: 1.5rem;
-            background: rgba(255, 255, 255, .78);
+        .glass-card {
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,.8);
-            box-shadow: 0 24px 60px rgba(0, 27, 94, .14);
         }
-
-        .logo-main {
-            position: relative;
-            z-index: 2;
-            max-height: 430px;
-            width: auto;
-            object-fit: contain;
-            cursor: pointer;
-            filter: drop-shadow(0 24px 24px rgba(0, 27, 94, .30));
-            transition: transform .45s ease, filter .45s ease;
+        .text-shadow-soft {
+            text-shadow: 0 10px 40px rgba(0,0,0,.12);
         }
-
-        .logo-main:hover {
-            transform: scale(1.06) translateY(-14px) rotate(-1deg);
-            filter: drop-shadow(0 34px 34px rgba(0, 51, 153, .45));
+        .floating-logo {
+            animation: floatLogo 5s ease-in-out infinite;
         }
-
-        @keyframes spin-soft {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .profile-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 2rem;
-            background:
-                radial-gradient(circle at 8% 10%, rgba(255, 211, 61, .18), transparent 28%),
-                linear-gradient(135deg, var(--pmii-dark) 0%, var(--pmii-dark-2) 54%, #003399 100%);
-            box-shadow: 0 35px 90px rgba(0, 27, 94, .28);
-        }
-
-        .profile-card::after {
-            content: "“";
-            position: absolute;
-            top: 14px;
-            right: 36px;
-            font-size: 9rem;
-            line-height: 1;
-            font-family: Georgia, serif;
-            color: rgba(255, 255, 255, .07);
-            pointer-events: none;
-        }
-
-        .profile-photo-panel {
-            background:
-                radial-gradient(circle at 50% 42%, rgba(255, 211, 61, .36), transparent 31%),
-                linear-gradient(180deg, #003399 0%, #001b5e 100%);
-        }
-
-        .ring-soft {
-            position: absolute;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,.22);
-        }
-
-        .value-card {
-            position: relative;
-            overflow: hidden;
-            min-height: 220px;
-            padding: 2rem;
-            border-radius: 2rem;
-            background: #ffffff;
-            border: 1px solid rgba(0, 51, 153, .08);
-            box-shadow: 0 20px 60px rgba(0, 27, 94, .07);
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 32px 80px rgba(0, 27, 94, .12);
-        }
-
-        .value-card::before {
-            content: "";
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            right: -72px;
-            top: -72px;
-            border-radius: 999px;
-            background: rgba(0, 51, 153, .07);
-        }
-
-        .value-icon {
-            width: 54px;
-            height: 54px;
-            border-radius: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--pmii-blue);
-            background: var(--pmii-blue-soft);
-            margin-bottom: 1.25rem;
-        }
-
-        .article-card {
-            display: block;
-            overflow: hidden;
-            border-radius: 2rem;
-            background: #fff;
-            border: 1px solid rgba(0, 51, 153, .08);
-            box-shadow: 0 18px 55px rgba(0, 27, 94, .07);
-            transition: transform .25s ease, box-shadow .25s ease;
-            height: 100%;
-        }
-
-        .article-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 35px 85px rgba(0, 27, 94, .13);
-        }
-
-        .article-image {
-            height: 225px;
-            background: #e5e7eb;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .article-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .7s ease;
-        }
-
-        .article-card:hover .article-image img {
-            transform: scale(1.07);
-        }
-
-        .article-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, .68), transparent 62%);
-            opacity: 0;
-            transition: opacity .3s ease;
-            display: flex;
-            align-items: flex-end;
-            padding: 1rem;
-        }
-
-        .article-card:hover .article-overlay {
-            opacity: 1;
-        }
-
-        .article-pill {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: .4rem .75rem;
-            border-radius: 999px;
-            background: rgba(255,255,255,.88);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: var(--pmii-blue);
-            font-size: .72rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: .06em;
-        }
-
-        .footer-modern {
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 51, 153, .55), transparent 34%),
-                linear-gradient(135deg, #050816 0%, #111827 72%);
-        }
-
-        .chat-window-modern {
-            width: calc(100vw - 3rem);
-            height: 60vh;
-            max-height: 500px;
-            min-height: 350px;
-        }
-
-        @media (min-width: 640px) {
-            .chat-window-modern { width: 350px; }
-        }
-
-        @media (min-width: 768px) {
-            .chat-window-modern { width: 380px; }
-        }
-
-        @media (max-width: 767px) {
-            .hero-title {
-                letter-spacing: -0.045em;
-            }
-
-            .btn-modern {
-                width: 100%;
-            }
-
-            .stat-card {
-                padding: .9rem;
-            }
-
-            .profile-card {
-                border-radius: 1.5rem;
-            }
-
-            .article-image {
-                height: 210px;
-            }
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100">
 
-    <nav class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-gray-200 shadow-sm transition-colors duration-300">
+    <nav class="fixed top-0 left-0 right-0 w-full z-50 border-b border-gray-200/80 dark:border-white/10 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl shadow-lg shadow-slate-900/5 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center h-20">
 
-                <a href="#beranda" class="flex items-center gap-4 z-50 group" aria-label="PMII KOMFAPSI Beranda">
-                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md p-1.5 group-hover:scale-105 transition-transform duration-300">
+                <a href="#beranda" class="flex items-center gap-4 z-50 group">
+                    <div class="w-12 h-12 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center shadow-lg shadow-blue-900/10 p-1.5 border border-gray-100 dark:border-white/10 group-hover:scale-105 transition-transform duration-300">
                         <img src="Untitled design.png" alt="Logo PMII" class="w-full h-full object-contain">
                     </div>
                     <div>
-                        <h1 class="font-extrabold text-xl leading-tight text-pmii-dark tracking-tight">PMII KOMFAPSI</h1>
-                        <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Cabang Ciputat</p>
+                        <h1 class="font-extrabold text-xl leading-tight text-pmii-dark dark:text-white tracking-tight">PMII KOMFAPSI</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider">Cabang Ciputat</p>
                     </div>
                 </a>
 
                 <div class="flex items-center gap-3 md:hidden z-50">
-                    <button id="theme-toggle-mobile" aria-label="Ganti tema" class="p-2 text-gray-600 hover:text-pmii-blue transition rounded-full hover:bg-gray-100">
+                    <button id="theme-toggle-mobile" class="p-2 text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition rounded-full hover:bg-gray-100 dark:hover:bg-white/10">
                         <svg class="theme-toggle-dark-icon hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                         <svg class="theme-toggle-light-icon hidden w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
                     </button>
-                    <button id="mobile-menu-btn" aria-label="Buka menu" class="flex items-center p-2 text-gray-600 hover:text-pmii-blue focus:outline-none">
+                    <button id="mobile-menu-btn" class="flex items-center p-2 text-gray-600 dark:text-gray-100 hover:text-pmii-blue focus:outline-none">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -481,19 +98,19 @@
                 </div>
 
                 <div id="desktop-nav-links" class="hidden md:flex space-x-8 items-center">
-                    <a href="#beranda" class="nav-link-modern">Beranda</a>
-                    <a href="#profil" class="nav-link-modern">Profil</a>
-                    <a href="#kegiatan" class="nav-link-modern">Kegiatan</a>
-                    <a href="struktur" class="nav-link-modern">Struktur</a>
-                    <a href="kabar" class="nav-link-modern">Berita</a>
+                    <a href="#beranda" class="nav-link text-sm font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition">Beranda</a>
+                    <a href="#profil" class="nav-link text-sm font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition">Profil</a>
+                    <a href="#kegiatan" class="nav-link text-sm font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition">Kegiatan</a>
+                    <a href="struktur" class="nav-link text-sm font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition">Struktur</a>
+                    <a href="kabar" class="nav-link text-sm font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition">Berita</a>
 
-                    <button id="theme-toggle-desktop" aria-label="Ganti tema" class="p-2 text-gray-500 hover:text-pmii-blue transition rounded-full hover:bg-gray-100">
+                    <button id="theme-toggle-desktop" class="p-2 text-gray-500 dark:text-gray-200 hover:text-pmii-blue transition rounded-full hover:bg-gray-100 dark:hover:bg-white/10">
                         <svg class="theme-toggle-dark-icon hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                         <svg class="theme-toggle-light-icon hidden w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
                     </button>
 
                     <div id="auth-desktop-container">
-                        <a href="login" class="bg-pmii-blue text-white px-6 py-3 rounded-full text-sm font-bold hover:opacity-90 transition shadow-lg block">
+                        <a href="login" class="bg-pmii-blue text-white px-6 py-3 rounded-full text-sm font-bold hover:opacity-95 hover:-translate-y-0.5 transition shadow-lg shadow-blue-900/20 block">
                             Portal Kader
                         </a>
                     </div>
@@ -501,13 +118,13 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div id="mobile-nav-links" class="flex flex-col px-6 py-5 space-y-4">
-                <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Beranda</a>
-                <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Profil</a>
-                <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue transition">Kegiatan</a>
-                <a href="struktur" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Struktur</a>
-                <a href="kabar" class="mobile-link text-base font-semibold text-gray-600 hover:text-pmii-blue">Berita</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-white/10 absolute w-full shadow-2xl">
+            <div id="mobile-nav-links" class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#beranda" class="mobile-link text-base font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue">Beranda</a>
+                <a href="#profil" class="mobile-link text-base font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue">Profil</a>
+                <a href="#kegiatan" class="mobile-link text-base font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue transition">Kegiatan</a>
+                <a href="struktur" class="mobile-link text-base font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue">Struktur</a>
+                <a href="kabar" class="mobile-link text-base font-semibold text-gray-600 dark:text-gray-200 hover:text-pmii-blue">Berita</a>
 
                 <div id="auth-mobile-container" class="mt-2">
                     <a href="login" class="bg-pmii-blue text-white px-6 py-3 rounded-xl text-center font-bold shadow-md block w-full">
@@ -518,255 +135,219 @@
         </div>
     </nav>
 
-    <section id="beranda" class="hero-section pt-32 pb-20 lg:pt-48 lg:pb-32 transition-colors duration-300">
-        <div class="blur-blob blob-blue"></div>
-        <div class="blur-blob blob-yellow"></div>
+    <section id="beranda" class="relative overflow-hidden pt-32 pb-24 lg:pt-44 lg:pb-28 bg-gradient-to-br from-white via-blue-50 to-yellow-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
+        <div class="absolute inset-0 hero-grid opacity-80 dark:opacity-20"></div>
+        <div class="absolute -top-24 -left-12 w-72 h-72 bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-20 right-0 w-96 h-96 bg-yellow-200/30 dark:bg-yellow-300/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/4 w-72 h-72 bg-pmii-blue/10 dark:bg-pmii-blue/10 rounded-full blur-3xl"></div>
 
         <div class="relative max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
-                <div class="section-eyebrow mb-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-white/5 border border-blue-200 dark:border-white/10 text-pmii-blue dark:text-blue-100 text-xs font-bold uppercase tracking-wider mb-6 shadow-sm glass-card">
+                    <span class="w-3 h-3 rounded-full bg-pmii-yellow inline-block shadow"></span>
                     Selamat Datang di Portal Resmi
                 </div>
 
-                <h1 class="hero-title text-5xl lg:text-7xl font-black text-pmii-dark leading-none mb-6">
-                    Bermakna <br/>
-                    <span class="hero-highlight">Berdampak,</span><br/>
-                    Adaptif.
-                </h1>
+                <p class="text-5xl lg:text-7xl font-black leading-[0.92] mb-6 text-shadow-soft">
+                    <span class="block text-gray-200 dark:text-white/10">Bermakna</span>
+                    <span class="block text-pmii-blue">Berdampak,</span>
+                    <span class="block text-pmii-dark dark:text-white">Adaptif.</span>
+                </p>
 
-                <p class="text-lg lg:text-xl text-gray-600 mb-8 max-w-xl leading-relaxed">
+                <p class="text-lg lg:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl leading-relaxed">
                     Menjadi episentrum Pergerakan Mahasiswa Islam Indonesia Komisariat Fakultas Psikologi yang adaptif, kolaboratif, dan berlandaskan nilai Islam Ahlussunnah wal Jama'ah.
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                    <a href="proker" class="btn-modern btn-primary-modern group">
+                    <a href="proker" class="bg-pmii-yellow text-pmii-dark px-8 py-4 rounded-full font-extrabold hover:opacity-95 transition shadow-xl shadow-yellow-200/60 inline-flex items-center justify-center gap-2 group">
                         <span>Program Kerja</span>
                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
-
-                    <a href="#profil" class="btn-modern btn-secondary-modern">
+                    <a href="#profil" class="bg-white/85 dark:bg-white/5 dark:text-white text-pmii-blue px-8 py-4 rounded-full font-bold border border-blue-100 dark:border-white/10 shadow-sm hover:-translate-y-0.5 transition inline-flex items-center justify-center">
                         Kenali KOMFAPSI
                     </a>
                 </div>
 
-                <div class="grid grid-cols-3 gap-3 max-w-lg">
-                    <div class="stat-card">
-                        <p class="text-2xl lg:text-3xl font-black text-pmii-blue">2026</p>
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">Masa Khidmah</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
+                    <div class="glass-card rounded-3xl border border-white/60 dark:border-white/10 bg-white/70 dark:bg-white/5 p-5 shadow-md">
+                        <p class="text-3xl font-black text-pmii-blue">2026</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-widest mt-1">Masa Khidmah</p>
                     </div>
-                    <div class="stat-card">
-                        <p class="text-2xl lg:text-3xl font-black text-pmii-blue">3+</p>
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">Kabar Kader</p>
+                    <div class="glass-card rounded-3xl border border-white/60 dark:border-white/10 bg-white/70 dark:bg-white/5 p-5 shadow-md">
+                        <p class="text-3xl font-black text-pmii-blue">3+</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-widest mt-1">Ruang Publikasi</p>
                     </div>
-                    <div class="stat-card">
-                        <p class="text-2xl lg:text-3xl font-black text-pmii-blue">AI</p>
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">Asisten Virtual</p>
+                    <div class="glass-card rounded-3xl border border-white/60 dark:border-white/10 bg-white/70 dark:bg-white/5 p-5 shadow-md">
+                        <p class="text-3xl font-black text-pmii-blue">AI</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-widest mt-1">Asisten Digital</p>
                     </div>
                 </div>
             </div>
 
-            <div class="hidden lg:block relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <div class="hero-logo-stage">
-                    <img src="Untitled design.png" 
-                         alt="Logo PMII Komfapsi" 
-                         class="logo-main">
+            <div class="hidden lg:block relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="150">
+                <div class="relative min-h-[560px] flex items-center justify-center">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-[88%] aspect-square rounded-full border border-blue-200 dark:border-white/10"></div>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-[68%] aspect-square rounded-full bg-gradient-to-br from-white via-gray-100 to-yellow-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-700 shadow-2xl"></div>
+                    </div>
+                    <img src="Untitled design.png"
+                         alt="Logo PMII Komfapsi"
+                         class="relative z-10 w-full max-w-[560px] object-contain floating-logo"
+                         style="filter: drop-shadow(0 35px 30px rgba(15, 23, 42, 0.18));">
 
-                    <div class="hero-logo-card">
-                        <p class="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Portal Digital</p>
-                        <p class="text-pmii-dark font-extrabold leading-tight">Dokumentasi, Kaderisasi,<br>dan Ruang Kolaborasi.</p>
+                    <div class="absolute left-0 bottom-8 glass-card bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-[2rem] p-6 max-w-[250px] shadow-xl">
+                        <p class="text-xs font-extrabold uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400 mb-2">Portal Digital</p>
+                        <p class="text-base font-bold text-pmii-dark dark:text-white leading-snug">Dokumentasi, Publikasi, dan Ruang Kolaborasi Kader.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="profil" class="py-24 bg-white relative transition-colors duration-300">
+    <section id="profil" class="py-24 bg-white dark:bg-slate-950 relative transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div data-aos="fade-up" class="max-w-3xl mx-auto text-center mb-14">
-                <span class="section-eyebrow mb-5">Profil Komisariat</span>
-                <h2 class="text-4xl lg:text-5xl font-black text-pmii-dark leading-tight mb-5">
-                    Ruang gerak kader psikologi yang berpikir, bergerak, dan berdampak.
-                </h2>
-                <p class="text-gray-600 text-lg leading-relaxed">
-                    KOMFAPSI hadir sebagai rumah intelektual dan gerakan bagi kader PMII Fakultas Psikologi.
-                </p>
-            </div>
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="bg-gradient-to-br from-[#062f9b] via-[#02257d] to-[#021a5b] rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-900/20 flex flex-col lg:flex-row border border-blue-900/20">
 
-            <div data-aos="zoom-in-up" data-aos-duration="1000" class="profile-card flex flex-col lg:flex-row border border-gray-800">
+                <div class="lg:w-[38%] relative min-h-[560px] lg:min-h-[640px] flex items-end justify-center overflow-hidden">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pmii-yellow rounded-full mix-blend-screen opacity-15 blur-xl"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] border border-white/25 rounded-full"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] border border-white/15 rounded-full"></div>
 
-                <div class="lg:w-2/5 relative profile-photo-panel min-h-[450px] flex items-end justify-center overflow-hidden">
-                    <div class="ring-soft w-64 h-64 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                    <div class="ring-soft w-80 h-80 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                    <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black opacity-30"></div>
-
-                    <img src="Gelix.png" alt="Felix Haris Rumangu - Ketua Umum PMII KOMFAPSI 2025-2026" class="relative z-10 w-full max-w-xs h-auto object-contain object-bottom transform scale-110">
+                    <img src="Gelix.png" alt="Felix Haris Rumangu - Ketua Umum PMII KOMFAPSI 2025-2026" class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-full max-w-[470px] lg:max-w-[500px] h-auto object-contain object-bottom drop-shadow-[0_18px_20px_rgba(0,0,0,0.45)] scale-[1.15] lg:scale-[1.2]">
                 </div>
 
-                <div class="lg:w-3/5 p-8 lg:p-16 text-white relative z-10 flex flex-col justify-center">
-                    <div class="inline-flex items-center gap-2 text-pmii-yellow text-xs font-black uppercase tracking-widest mb-5">
-                        <span class="w-8 h-px bg-pmii-yellow"></span>
-                        Sambutan Ketua Umum
-                    </div>
-
-                    <h2 class="text-3xl lg:text-5xl font-black mb-6 leading-tight">Membangun Ekosistem Pergerakan Berbasis Keilmuan.</h2>
-                    <p class="text-blue-100 text-lg mb-8 leading-relaxed font-light">
+                <div class="lg:w-[62%] p-8 lg:p-16 text-white relative z-10 flex flex-col justify-center">
+                    <div class="absolute top-8 right-8 text-white/10 text-8xl lg:text-9xl font-black leading-none select-none">“</div>
+                    <p class="text-pmii-yellow font-extrabold uppercase tracking-[0.22em] text-sm mb-6">Sambutan Ketua Umum</p>
+                    <h2 class="text-4xl lg:text-6xl font-black leading-[1.02] mb-6 max-w-3xl">Membangun Ekosistem Pergerakan Berbasis Keilmuan.</h2>
+                    <p class="text-blue-50/90 text-lg lg:text-2xl/relaxed mb-8 leading-relaxed font-light max-w-3xl">
                         "Di era digital, tantangan kita bukan lagi sekadar retorika, melainkan bagaimana merekonstruksi pemikiran dan menghadirkan solusi konkret. Website ini adalah langkah nyata Komfapsi untuk menciptakan ruang kolaborasi, pendokumentasian sejarah, dan literasi psikologi yang berwawasan kebangsaan."
                     </p>
-                    <div class="pt-6 border-t border-white border-opacity-10">
-                        <p class="text-pmii-yellow font-black text-2xl tracking-wide">Felix Haris Rumangu</p>
-                        <p class="text-blue-200 text-sm font-bold uppercase mt-1 tracking-widest">Ketua Umum PMII KOMFAPSI 2025-2026</p>
+                    <div class="border-t border-white/15 pt-8">
+                        <p class="text-pmii-yellow font-black text-3xl tracking-tight">Felix Haris Rumangu</p>
+                        <p class="text-blue-100/90 text-base font-extrabold uppercase mt-2 tracking-[0.18em]">Ketua Umum PMII KOMFAPSI 2025-2026</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-gray-50 relative overflow-hidden transition-colors duration-300">
-        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
-
+    <section class="py-24 bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid lg:grid-cols-3 gap-8 items-start">
-                <div data-aos="fade-right" class="lg:col-span-1">
-                    <span class="section-eyebrow mb-5">Nilai Gerakan</span>
-                    <h2 class="text-4xl lg:text-5xl font-black text-pmii-dark leading-tight mb-5">
-                        Tiga napas utama KOMFAPSI.
-                    </h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        Website ini bukan sekadar halaman informasi, tapi ruang identitas gerakan: adaptif pada zaman, kolaboratif dalam kerja, dan berkeilmuan dalam gagasan.
-                    </p>
+            <div class="max-w-2xl mx-auto text-center mb-14" data-aos="fade-up">
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-white/5 border border-blue-200 dark:border-white/10 text-pmii-blue dark:text-blue-100 text-xs font-bold uppercase tracking-[0.18em] mb-5">Nilai Gerakan</span>
+                <h2 class="text-3xl lg:text-5xl font-black text-pmii-dark dark:text-white mb-4">Tiga Arah Utama Pergerakan</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">KOMFAPSI hadir sebagai ruang kaderisasi, pengembangan nalar, dan gerakan sosial yang relevan dengan tantangan zaman.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-slate-950 border border-gray-100 dark:border-white/10 rounded-[2rem] p-8 shadow-lg shadow-slate-900/5 hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/10 text-pmii-blue flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-black text-2xl mb-3 text-pmii-dark dark:text-white">Adaptif</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Membaca perubahan zaman dan menjawabnya dengan gerakan yang relevan, segar, dan berorientasi solusi.</p>
                 </div>
 
-                <div class="lg:col-span-2 grid md:grid-cols-3 gap-6">
-                    <div data-aos="fade-up" data-aos-delay="100" class="value-card">
-                        <div class="value-icon">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 class="font-black text-xl text-pmii-dark mb-3">Adaptif</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Membaca perubahan zaman dan menjawabnya dengan gerakan digital yang relevan.</p>
+                <div class="bg-white dark:bg-slate-950 border border-gray-100 dark:border-white/10 rounded-[2rem] p-8 shadow-lg shadow-slate-900/5 hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/10 text-pmii-blue flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5m10 0v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6m10 0H7"></path></svg>
                     </div>
+                    <h3 class="font-black text-2xl mb-3 text-pmii-dark dark:text-white">Kolaboratif</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Membangun ruang belajar, kaderisasi, dan kerja bersama lintas gagasan untuk memperkuat ekosistem gerakan.</p>
+                </div>
 
-                    <div data-aos="fade-up" data-aos-delay="200" class="value-card">
-                        <div class="value-icon">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9-4.13a4 4 0 11-8 0 4 4 0 018 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <h3 class="font-black text-xl text-pmii-dark mb-3">Kolaboratif</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Membangun ruang belajar, kaderisasi, dan kerja bersama lintas gagasan.</p>
+                <div class="bg-white dark:bg-slate-950 border border-gray-100 dark:border-white/10 rounded-[2rem] p-8 shadow-lg shadow-slate-900/5 hover:-translate-y-1 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/10 text-pmii-blue flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.747-8.626l11.494 5.747m-11.494 0l11.494-5.747"></path></svg>
                     </div>
-
-                    <div data-aos="fade-up" data-aos-delay="300" class="value-card">
-                        <div class="value-icon">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
-                        </div>
-                        <h3 class="font-black text-xl text-pmii-dark mb-3">Berkeilmuan</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Menghubungkan psikologi, keislaman, dan realitas sosial kader.</p>
-                    </div>
+                    <h3 class="font-black text-2xl mb-3 text-pmii-dark dark:text-white">Berkeilmuan</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Menghubungkan psikologi, keislaman, dan realitas sosial dalam setiap kerja intelektual serta praksis kader.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="kegiatan" class="py-24 bg-white relative transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
-                <div data-aos="fade-down" class="max-w-2xl">
-                    <span class="section-eyebrow mb-5">Ruang Dokumentasi</span>
-                    <h2 class="text-4xl lg:text-5xl font-black text-pmii-dark mb-4 leading-tight">Kabar Terbaru KOMFAPSI</h2>
-                    <p class="text-gray-600 text-lg leading-relaxed">Dokumentasi pergerakan, refleksi kader, dan aktivitas PMII Komisariat Fakultas Psikologi.</p>
-                </div>
-
-                <a href="kabar" data-aos="fade-left" class="btn-modern btn-secondary-modern self-start lg:self-auto">
-                    Lihat Semua Berita
-                </a>
+    <section id="kegiatan" class="py-24 bg-white dark:bg-slate-950 relative transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <div class="max-w-2xl mx-auto mb-14">
+                <span data-aos="fade-down" class="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-white/5 border border-blue-200 dark:border-white/10 text-pmii-blue dark:text-blue-100 text-xs font-bold uppercase tracking-[0.18em] mb-5">Ruang Dokumentasi</span>
+                <h2 data-aos="fade-down" class="text-3xl lg:text-5xl font-black text-pmii-dark dark:text-white mb-4">Kabar Terbaru KOMFAPSI</h2>
+                <p data-aos="fade-down" data-aos-delay="100" class="text-gray-600 dark:text-gray-300">Dokumentasi pergerakan, refleksi kader, dan aktivitas PMII Komisariat Fakultas Psikologi.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="artikel-lebaran" data-aos="fade-up" data-aos-delay="100" class="article-card group">
-                    <div class="article-image">
-                        <img src="IMG_9882.PNG" alt="Ilustrasi artikel Idul Fitri 1447 H">
-                        <span class="article-pill">Refleksi</span>
-                        <div class="article-overlay">
-                            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-2 rounded-full">Baca Selengkapnya</span>
+                <a href="artikel-lebaran" data-aos="fade-up" data-aos-delay="100" class="block bg-white dark:bg-slate-900 rounded-[2rem] shadow-lg shadow-slate-900/5 overflow-hidden border border-gray-100 dark:border-white/10 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="h-56 bg-gray-200 overflow-hidden relative">
+                        <img src="IMG_9882.PNG" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-pmii-blue">Artikel</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Selengkapnya</span>
                         </div>
                     </div>
-                    <div class="p-7 text-left">
-                        <p class="text-xs text-pmii-blue font-black uppercase mb-3 tracking-wider">21 Maret 2026</p>
-                        <h3 class="font-black text-xl text-gray-900 mb-3 leading-snug group-hover:text-pmii-blue transition-colors">Idul Fitri 1447 H: Kembali ke Fitrah Kemanusiaan</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Gema takbir berkumandang. Bagi kader PMII, Idul Fitri bukan sekadar seremonial, melainkan momentum refleksi psikologis...</p>
+                    <div class="p-7 text-left border-t border-gray-100 dark:border-white/10">
+                        <p class="text-xs text-pmii-blue font-bold uppercase mb-3 tracking-widest">21 Maret 2026</p>
+                        <h3 class="font-black text-xl text-gray-800 dark:text-white mb-3 leading-snug group-hover:text-pmii-blue transition-colors">Idul Fitri 1447 H: Kembali ke Fitrah Kemanusiaan</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-300 line-clamp-2 leading-relaxed">Gema takbir berkumandang. Bagi kader PMII, Idul Fitri bukan sekadar seremonial, melainkan momentum refleksi psikologis...</p>
                     </div>
                 </a>
 
-                <a href="artikel-1" data-aos="fade-up" data-aos-delay="200" class="article-card group">
-                    <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Ilustrasi kajian psikologi dan Islam">
-                        <span class="article-pill">Kajian</span>
-                        <div class="article-overlay">
-                            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-2 rounded-full">Baca Selengkapnya</span>
+                <a href="artikel-1" data-aos="fade-up" data-aos-delay="200" class="block bg-white dark:bg-slate-900 rounded-[2rem] shadow-lg shadow-slate-900/5 overflow-hidden border border-gray-100 dark:border-white/10 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="h-56 bg-gray-200 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-pmii-blue">Kajian</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Selengkapnya</span>
                         </div>
                     </div>
-                    <div class="p-7 text-left">
-                        <p class="text-xs text-pmii-blue font-black uppercase mb-3 tracking-wider">17 Maret 2026</p>
-                        <h3 class="font-black text-xl text-gray-900 mb-3 leading-snug group-hover:text-pmii-blue transition-colors">Kajian Psikologi & Islam: Dekonstruksi Teori Barat</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Membenturkan hegemoni teori-teori psikologi Barat dengan pandangan Islam tentang jiwa manusia...</p>
+                    <div class="p-7 text-left border-t border-gray-100 dark:border-white/10">
+                        <p class="text-xs text-pmii-blue font-bold uppercase mb-3 tracking-widest">17 Maret 2026</p>
+                        <h3 class="font-black text-xl text-gray-800 dark:text-white mb-3 leading-snug group-hover:text-pmii-blue transition-colors">Kajian Psikologi & Islam: Dekonstruksi Teori Barat</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-300 line-clamp-2 leading-relaxed">Membenturkan hegemoni teori-teori psikologi Barat dengan pandangan Islam tentang jiwa manusia...</p>
                     </div>
                 </a>
 
-                <a href="artikel-pelantikan" data-aos="fade-up" data-aos-delay="300" class="article-card group">
-                    <div class="article-image">
-                        <img src="Pelantikan.png" alt="Dokumentasi pelantikan pengurus PMII KOMFAPSI">
-                        <span class="article-pill">Liputan</span>
-                        <div class="article-overlay">
-                            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-2 rounded-full">Baca Liputan</span>
+                <a href="artikel-pelantikan" data-aos="fade-up" data-aos-delay="300" class="block bg-white dark:bg-slate-900 rounded-[2rem] shadow-lg shadow-slate-900/5 overflow-hidden border border-gray-100 dark:border-white/10 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="h-56 bg-gray-200 overflow-hidden relative">
+                        <img src="Pelantikan.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-pmii-blue">Liputan</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                            <span class="text-white font-bold text-sm bg-pmii-blue px-3 py-1 rounded-full w-max">Baca Liputan</span>
                         </div>
                     </div>
-                    <div class="p-7 text-left">
-                        <p class="text-xs text-pmii-blue font-black uppercase mb-3 tracking-wider">7 Februari 2026</p>
-                        <h3 class="font-black text-xl text-gray-900 mb-3 leading-snug group-hover:text-pmii-blue transition-colors">Sah! Felix Haris Resmi Nahkodai PMII Komfapsi</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Prosesi pelantikan pengurus baru Masa Khidmah 2025-2026 berjalan dengan khidmat dan membawa visi pergerakan baru.</p>
+                    <div class="p-7 text-left border-t border-gray-100 dark:border-white/10">
+                        <p class="text-xs text-pmii-blue font-bold uppercase mb-3 tracking-widest">7 Februari 2026</p>
+                        <h3 class="font-black text-xl text-gray-800 dark:text-white mb-3 leading-snug group-hover:text-pmii-blue transition-colors">Sah! Felix Haris Resmi Nahkodai PMII Komfapsi</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-300 line-clamp-2 leading-relaxed">Prosesi pelantikan pengurus baru Masa Khidmah 2025-2026 berjalan dengan khidmat dan membawa visi pergerakan baru.</p>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="footer-modern text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row justify-between gap-10 pb-10 border-b border-white border-opacity-10">
-                <div class="max-w-md">
-                    <div class="flex items-center justify-center lg:justify-start gap-3 mb-5">
-                        <div class="w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-md p-1.5">
-                            <img src="Untitled design.png" alt="Logo PMII" class="w-full h-full object-contain">
-                        </div>
-                        <span class="font-black text-white tracking-widest uppercase">PMII KOMFAPSI</span>
-                    </div>
-                    <p class="text-sm leading-relaxed text-center lg:text-left">
-                        Portal resmi Komisariat Fakultas Psikologi: ruang dokumentasi, literasi, dan kolaborasi kader.
-                    </p>
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-3">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md p-1.5">
+                    <img src="Untitled design.png" alt="Logo PMII" class="w-full h-full object-contain">
                 </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-center lg:text-left">
-                    <a href="#beranda" class="hover:text-white transition">Beranda</a>
-                    <a href="#profil" class="hover:text-white transition">Profil</a>
-                    <a href="#kegiatan" class="hover:text-white transition">Kegiatan</a>
-                    <a href="kabar" class="hover:text-white transition">Berita</a>
-                    <a href="struktur" class="hover:text-white transition">Struktur</a>
-                    <a href="proker" class="hover:text-white transition">Program Kerja</a>
-                    <a href="login" class="hover:text-white transition">Portal Kader</a>
+                <div>
+                    <span class="font-extrabold text-white tracking-widest uppercase block">PMII KOMFAPSI</span>
+                    <span class="text-xs uppercase tracking-[0.2em] text-gray-500">Cabang Ciputat</span>
                 </div>
             </div>
-
-            <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-                <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi.</p>
-                <p class="text-xs uppercase tracking-widest text-gray-500">Bermakna • Berdampak • Adaptif</p>
-            </div>
+            <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi.</p>
         </div>
     </footer>
 
-    <div class="fixed bottom-6 right-6 md:bottom-12 md:right-10 z-50">
-        <button id="chat-toggle" aria-label="Buka asisten virtual" class="bg-pmii-blue text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border-2 border-white focus:outline-none">
+    <div class="fixed bottom-6 right-6 md:bottom-12 md:right-10 z-[9999]">
+        <button id="chat-toggle" class="bg-pmii-blue text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border-2 border-white/80 focus:outline-none">
             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
         </button>
 
-        <div id="chat-window" class="hidden absolute bottom-16 md:bottom-20 right-0 chat-window-modern bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden origin-bottom-right transition-all duration-300">
+        <div id="chat-window" class="hidden absolute bottom-16 md:bottom-20 right-0 w-[calc(100vw-3rem)] sm:w-[350px] md:w-[380px] bg-white dark:bg-slate-950 rounded-3xl shadow-2xl border border-gray-200 dark:border-white/10 flex flex-col overflow-hidden origin-bottom-right transition-all duration-300" style="height: 60vh; max-height: 500px; min-height: 350px;">
 
             <div class="bg-pmii-dark p-4 text-white flex justify-between items-center" style="flex: 0 0 auto;">
                 <div class="flex items-center gap-3">
@@ -775,20 +356,20 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-sm leading-tight">Asisten Virtual</h4>
-                        <p class="text-xs text-blue-200 uppercase tracking-widest font-semibold">Online | AI Komfapsi</p>
+                        <p class="text-[10px] text-blue-200 uppercase tracking-widest font-semibold">Online | AI Komfapsi</p>
                     </div>
                 </div>
-                <button id="close-chat" aria-label="Tutup asisten virtual" class="text-white opacity-70 hover:opacity-100 focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                <button id="close-chat" class="text-white opacity-70 hover:opacity-100 focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
 
-            <div id="chat-content" class="p-4 space-y-4 bg-gray-50 text-sm" style="flex: 1 1 auto; overflow-y: auto; min-height: 0; -webkit-overflow-scrolling: touch;">
-                <div class="bg-blue-100 text-pmii-dark p-3 rounded-2xl rounded-tl-none max-w-xs shadow-sm w-auto break-words whitespace-pre-wrap">Selamat datang, Sahabat! Saya adalah Asisten AI PMII Komfapsi. Ada yang bisa saya bantu terkait pergerakan atau keilmuan psikologi?</div>
+            <div id="chat-content" class="p-4 space-y-4 bg-gray-50 dark:bg-slate-900 text-sm" style="flex: 1 1 auto; overflow-y: auto; min-height: 0; -webkit-overflow-scrolling: touch;">
+                <div class="bg-blue-100 dark:bg-blue-500/10 text-pmii-dark dark:text-blue-50 p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm w-fit break-words whitespace-pre-wrap">Selamat datang, Sahabat! Saya adalah Asisten AI PMII Komfapsi. Ada yang bisa saya bantu terkait pergerakan atau keilmuan psikologi?</div>
             </div>
 
-            <div class="p-3 border-t border-gray-100 bg-white" style="flex: 0 0 auto;">
+            <div class="p-3 border-t border-gray-100 dark:border-white/10 bg-white dark:bg-slate-950" style="flex: 0 0 auto;">
                 <form id="chat-form" class="flex gap-2 m-0">
-                    <input type="text" id="chat-input" placeholder="Tanya sesuatu..." class="flex-grow px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-pmii-blue text-sm border-none text-gray-800">
-                    <button type="submit" aria-label="Kirim pesan" class="bg-pmii-blue text-white p-2 rounded-full hover:bg-pmii-dark transition focus:outline-none">
+                    <input type="text" id="chat-input" placeholder="Tanya sesuatu..." class="flex-grow px-4 py-2 bg-gray-100 dark:bg-white/5 rounded-full focus:outline-none focus:ring-2 focus:ring-pmii-blue text-sm border-none text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+                    <button type="submit" class="bg-pmii-blue text-white p-2 rounded-full hover:bg-pmii-dark transition focus:outline-none">
                         <svg class="w-5 h-5 transform rotate-90" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
                     </button>
                 </form>
