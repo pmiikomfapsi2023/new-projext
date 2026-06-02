@@ -1,6 +1,10 @@
 /* =========================================================
    PMII KOMFAPSI - STYLE FINAL STABIL
    Cocok untuk Tailwind CDN 2.2.19
+   Catatan penting:
+   - Foto Ketua Umum memakai HEIGHT, bukan WIDTH.
+   - Karena file Gelix.png berukuran 2268x2003, pakai height
+     agar proporsi orang tidak terlihat pendek / terlalu bawah.
    ========================================================= */
 
 /* ---------- Token Warna ---------- */
@@ -609,7 +613,7 @@ body.dark-mode .hero-info-card {
 }
 
 /* =========================================================
-   PROFILE - FOTO KETUA UMUM SUDAH DINAIKKAN
+   PROFILE - FIX FOTO KETUA UMUM
    ========================================================= */
 .profile-section {
     background: var(--bg-section);
@@ -625,63 +629,68 @@ body.dark-mode .hero-info-card {
     background: linear-gradient(135deg, #0738A7 0%, #062C86 48%, #041A58 100%);
     box-shadow: 0 28px 80px rgba(0, 51, 153, 0.24);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    min-height: 560px;
+    min-height: 585px;
 }
 
 .profile-photo-area {
     position: relative;
     overflow: hidden;
-    min-height: 560px;
+    min-height: 585px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     background:
-        radial-gradient(circle at center 39%, rgba(255, 215, 0, 0.20), transparent 28%),
+        radial-gradient(circle at center 38%, rgba(255, 215, 0, 0.20), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.08));
 }
 
 .profile-ring {
     position: absolute;
     left: 50%;
-    top: 39%;
+    top: 38%;
     transform: translate(-50%, -50%);
     border-radius: 999px;
     pointer-events: none;
 }
 
 .profile-ring-one {
-    width: 260px;
-    height: 260px;
+    width: 255px;
+    height: 255px;
     border: 1px solid rgba(255,255,255,0.22);
 }
 
 .profile-ring-two {
-    width: 380px;
-    height: 380px;
+    width: 370px;
+    height: 370px;
     border: 1px solid rgba(255,255,255,0.14);
 }
 
 .profile-yellow-orb {
     position: absolute;
-    width: 170px;
-    height: 170px;
+    width: 165px;
+    height: 165px;
     border-radius: 999px;
     left: 50%;
-    top: 39%;
+    top: 38%;
     transform: translate(-50%, -50%);
     background: rgba(255, 215, 0, 0.18);
     filter: blur(16px);
 }
 
+/*
+   KUNCI FIX:
+   Jangan pakai width untuk Gelix.png, karena file aslinya 2268x2003.
+   Pakai height agar tokoh terlihat tinggi dan proporsional.
+*/
 .profile-person-img {
     position: absolute;
     z-index: 3;
     left: 50%;
-    bottom: 72px;
+    bottom: 0;
     transform: translateX(-50%);
-    width: 84%;
-    max-width: 365px;
-    height: auto;
+    height: 520px;
+    width: auto;
+    max-width: none;
     object-fit: contain;
     object-position: bottom center;
     filter: drop-shadow(0 18px 20px rgba(0, 0, 0, 0.40));
@@ -1286,13 +1295,14 @@ body.dark-mode .mobile-user-box {
     }
 
     .profile-photo-area {
-        min-height: 500px;
+        min-height: 520px;
     }
 
     .profile-person-img {
-        width: 72%;
-        max-width: 330px;
-        bottom: 48px;
+        height: 470px;
+        width: auto;
+        max-width: none;
+        bottom: 0;
     }
 
     .profile-text-area {
@@ -1341,7 +1351,7 @@ body.dark-mode .mobile-user-box {
     }
 
     .profile-photo-area {
-        min-height: 430px;
+        min-height: 440px;
     }
 
     .profile-ring-one {
@@ -1360,9 +1370,10 @@ body.dark-mode .mobile-user-box {
     }
 
     .profile-person-img {
-        width: 78%;
-        max-width: 290px;
-        bottom: 34px;
+        height: 395px;
+        width: auto;
+        max-width: none;
+        bottom: 0;
     }
 
     .profile-text-area {
@@ -1441,9 +1452,10 @@ body.dark-mode .mobile-user-box {
     }
 
     .profile-person-img {
-        width: 82%;
-        max-width: 260px;
-        bottom: 28px;
+        height: 350px;
+        width: auto;
+        max-width: none;
+        bottom: 0;
     }
 
     .profile-text-area h2 {
