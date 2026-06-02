@@ -5,81 +5,743 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Program Kerja - PMII KOMFAPSI</title>
     <link rel="icon" type="image/png" href="Untitled design.png">
-    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .bg-pmii-blue { background-color: #003399; }
-        .text-pmii-blue { color: #003399; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        :root {
+            --pmii-blue: #003399;
+            --pmii-blue-light: #2563eb;
+            --pmii-dark: #001b5e;
+            --pmii-yellow: #FFD700;
+
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+
+            --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.08);
+            --shadow-card: 0 24px 65px rgba(15, 23, 42, 0.12);
+            --shadow-blue: 0 22px 60px rgba(0, 51, 153, 0.18);
+            --nav-bg: rgba(255, 255, 255, 0.94);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            border: 0;
+        }
+
+        .bg-pmii-blue {
+            background-color: var(--pmii-blue);
+        }
+
+        .text-pmii-blue {
+            color: var(--pmii-blue);
+        }
+
+        .site-nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-weight: 800;
+            transition: color 0.25s ease;
+        }
+
+        .back-link svg {
+            transition: transform 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: var(--pmii-blue-light);
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        .nav-title {
+            color: var(--text-main);
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 9.2rem 0 5.5rem;
+            background:
+                radial-gradient(circle at 14% 24%, rgba(255, 215, 0, 0.22), transparent 30%),
+                radial-gradient(circle at 88% 16%, rgba(0, 51, 153, 0.18), transparent 32%),
+                linear-gradient(135deg, #ffffff 0%, #eef5ff 56%, #fff8d7 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+            background-size: 44px 44px;
+            opacity: 0.85;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(35px);
+            pointer-events: none;
+        }
+
+        .hero-blob-blue {
+            width: 440px;
+            height: 440px;
+            right: -160px;
+            top: 110px;
+            background: rgba(37, 99, 235, 0.13);
+        }
+
+        .hero-blob-yellow {
+            width: 430px;
+            height: 430px;
+            left: -180px;
+            bottom: -150px;
+            background: rgba(255, 215, 0, 0.20);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+        }
+
+        .section-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--pmii-blue);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            border-radius: 999px;
+            padding: 0.58rem 1rem;
+            font-size: 0.75rem;
+            line-height: 1;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.13em;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .section-pill span {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: var(--pmii-yellow);
+            box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.18);
+            flex: 0 0 auto;
+        }
+
+        .hero-title {
+            margin-top: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+            font-size: 5.1rem;
+            line-height: 0.95;
+            font-weight: 900;
+            letter-spacing: -0.07em;
+        }
+
+        .hero-title strong {
+            display: block;
+            color: var(--pmii-blue-light);
+            font-weight: 900;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.78;
+            max-width: 680px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            min-height: 54px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            border-radius: 999px;
+            padding: 0 1.65rem;
+            font-size: 0.95rem;
+            font-weight: 900;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--pmii-blue);
+            color: #ffffff;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.82);
+            color: var(--pmii-blue);
+            border: 1px solid rgba(148, 163, 184, 0.30);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(14px);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary svg,
+        .btn-secondary svg {
+            transition: transform 0.25s ease;
+        }
+
+        .btn-primary:hover svg,
+        .btn-secondary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .program-section {
+            position: relative;
+            padding: 5.5rem 0 6rem;
+            background: var(--bg-body);
+        }
+
+        .program-header {
+            max-width: 720px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .program-header h2 {
+            color: var(--text-main);
+            font-size: 3.25rem;
+            line-height: 1.08;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .program-header p {
+            color: var(--text-muted);
+            line-height: 1.75;
+            font-size: 1rem;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .program-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 360px;
+            overflow: hidden;
+            background: var(--bg-card);
+            color: inherit;
+            border: 1px solid var(--border);
+            border-radius: 1.8rem;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-card);
+            border-color: rgba(0, 51, 153, 0.22);
+        }
+
+        .program-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            background: radial-gradient(circle at 86% 12%, rgba(37, 99, 235, 0.08), transparent 28%);
+        }
+
+        .program-card:hover::before {
+            opacity: 1;
+        }
+
+        .program-card.open-card {
+            border-color: rgba(255, 215, 0, 0.58);
+            box-shadow: 0 24px 65px rgba(255, 215, 0, 0.18);
+        }
+
+        .program-card.open-card::before {
+            opacity: 1;
+            background: radial-gradient(circle at 86% 12%, rgba(255, 215, 0, 0.14), transparent 30%);
+        }
+
+        .card-top {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .program-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+
+        .program-card:hover .program-icon {
+            transform: scale(1.08);
+        }
+
+        .icon-blue {
+            background: rgba(0, 51, 153, 0.08);
+            color: var(--pmii-blue);
+        }
+
+        .icon-yellow {
+            background: rgba(255, 215, 0, 0.16);
+            color: #ca8a04;
+        }
+
+        .icon-green {
+            background: rgba(22, 163, 74, 0.10);
+            color: #16a34a;
+        }
+
+        .status-badge {
+            border-radius: 999px;
+            padding: 0.42rem 0.72rem;
+            font-size: 0.66rem;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .badge-muted {
+            background: #111827;
+            color: #ffffff;
+        }
+
+        .badge-open {
+            background: var(--pmii-yellow);
+            color: var(--pmii-dark);
+            box-shadow: 0 10px 22px rgba(255, 215, 0, 0.28);
+        }
+
+        .program-type {
+            position: relative;
+            z-index: 2;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
+        .program-card h3 {
+            position: relative;
+            z-index: 2;
+            color: var(--text-main);
+            font-size: 2rem;
+            line-height: 1.08;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.9rem;
+            transition: color 0.25s ease;
+        }
+
+        .program-card:hover h3 {
+            color: var(--pmii-blue-light);
+        }
+
+        .program-card.open-card:hover h3 {
+            color: #ca8a04;
+        }
+
+        .program-card p {
+            position: relative;
+            z-index: 2;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.72;
+            margin-bottom: 1.4rem;
+        }
+
+        .card-footer {
+            position: relative;
+            z-index: 2;
+            margin-top: auto;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 900;
+            transition: color 0.25s ease;
+        }
+
+        .program-card:hover .card-footer {
+            color: var(--pmii-blue-light);
+        }
+
+        .open-card .card-footer {
+            color: #ca8a04;
+        }
+
+        .card-footer svg {
+            flex: 0 0 auto;
+            transition: transform 0.25s ease;
+        }
+
+        .program-card:hover .card-footer svg {
+            transform: translateX(4px);
+        }
+
+        .info-strip {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .info-box h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 0.6rem;
+        }
+
+        .info-box p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background: #020617;
+            color: #94a3b8;
+            padding: 2.7rem 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-logo {
+            width: 42px;
+            height: 42px;
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-brand {
+            display: block;
+            color: #ffffff;
+            font-weight: 900;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            font-size: 0.92rem;
+        }
+
+        .footer small {
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1024px) {
+            .program-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-card {
+                min-height: auto;
+            }
+
+            .info-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 7.5rem 0 4rem;
+            }
+
+            .hero-title {
+                font-size: 3.8rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .program-section {
+                padding: 4rem 0 4.5rem;
+            }
+
+            .program-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .section-pill {
+                font-size: 0.68rem;
+                letter-spacing: 0.09em;
+            }
+
+            .program-card {
+                padding: 1.35rem;
+            }
+
+            .program-card h3 {
+                font-size: 1.7rem;
+            }
+
+            .nav-title {
+                display: none;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
 
-    <nav class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-gray-200 shadow-sm">
+    <nav class="site-nav fixed top-0 left-0 right-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 text-gray-600 hover:text-pmii-blue transition group">
-                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                <span class="font-semibold text-sm md:text-base">Kembali ke Beranda</span>
+            <a href="index.html" class="back-link">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span>Kembali ke Beranda</span>
             </a>
-            <div class="font-bold text-gray-900 text-lg tracking-widest uppercase hidden md:block">Agenda Komisariat</div>
-            <div class="w-24 hidden md:block"></div> 
+
+            <div class="hidden md:flex items-center gap-3">
+                <div class="brand-logo">
+                    <img src="Untitled design.png" alt="Logo PMII" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <p class="nav-title">Agenda Komisariat</p>
+                </div>
+            </div>
+
+            <div class="w-24 hidden md:block"></div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-12 bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Program Kerja</h1>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto">Ruang informasi, pendaftaran, dan rekam jejak kegiatan unggulan PMII Komisariat Fakultas Psikologi.</p>
+    <section class="hero-section">
+        <div class="hero-grid"></div>
+        <div class="hero-blob hero-blob-blue"></div>
+        <div class="hero-blob hero-blob-yellow"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="hero-content">
+                <div class="section-pill">
+                    <span></span>
+                    Program Kerja
+                </div>
+
+                <h1 class="hero-title">
+                    Agenda Gerakan
+                    <strong>KOMFAPSI.</strong>
+                </h1>
+
+                <p class="hero-description">
+                    Ruang informasi, pendaftaran, dan rekam jejak kegiatan unggulan PMII Komisariat Fakultas Psikologi.
+                    Pilih agenda untuk melihat detail atau melakukan pendaftaran.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#program-list" class="btn-primary">
+                        Lihat Program
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </a>
+                    <a href="index.html" class="btn-secondary">
+                        Kembali ke Beranda
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <main class="py-16 max-w-5xl mx-auto px-6 lg:px-12 flex-grow">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <a href="daftarmapaba.html" class="relative block bg-white rounded-3xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                <div class="absolute top-4 right-4 bg-gray-800 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Coming Soon</div>
-                <div class="w-14 h-14 bg-blue-50 text-pmii-blue rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-pmii-blue transition-colors">MAPABA</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Masa Penerimaan Anggota Baru. Gerbang awal untuk bergabung dan berproses bersama keluarga besar PMII.</p>
-                <div class="mt-6 flex items-center text-sm font-bold text-gray-400 group-hover:text-pmii-blue transition-colors">
-                    Lihat Detail <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-            </a>
+    <main id="program-list" class="program-section flex-grow">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="program-header">
+                <h2>Pilih Program Kerja</h2>
+                <p>Tiga agenda utama KOMFAPSI yang menjadi ruang proses kader, mulai dari penerimaan anggota baru hingga pengabdian sosial.</p>
+            </div>
 
-            <a href="daftarmok.html" class="relative block bg-white rounded-3xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                <div class="absolute top-4 right-4 bg-yellow-500 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full animate-pulse">Open</div>
-                <div class="w-14 h-14 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-yellow-600 transition-colors">MOK</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Masa Orientasi Kader. Penempaan kapasitas intelektual dan penguatan ideologi Aswaja bagi kader berkelanjutan.</p>
-                <div class="mt-6 flex items-center text-sm font-bold text-yellow-600 transition-colors">
-                    Daftar Sekarang <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-            </a>
+            <div class="program-grid">
+                <a href="daftarmapaba.html" class="program-card">
+                    <div class="card-top">
+                        <div class="program-icon icon-blue">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+                        </div>
+                        <span class="status-badge badge-muted">Coming Soon</span>
+                    </div>
 
-            <a href="live-in.html" class="relative block bg-white rounded-3xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                <div class="absolute top-4 right-4 bg-gray-800 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Coming Soon</div>
-                <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">Live In</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Penyatuan diri dengan masyarakat. Mengabdi dan mengaplikasikan ilmu psikologi secara langsung di lingkungan sosial.</p>
-                <div class="mt-6 flex items-center text-sm font-bold text-gray-400 group-hover:text-green-600 transition-colors">
-                    Lihat Detail <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-            </a>
+                    <p class="program-type">Kaderisasi Awal</p>
+                    <h3>MAPABA</h3>
+                    <p>Masa Penerimaan Anggota Baru. Gerbang awal untuk bergabung dan berproses bersama keluarga besar PMII.</p>
 
-         </div>
+                    <div class="card-footer">
+                        <span>Lihat Detail</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+
+                <a href="daftarmok.html" class="program-card open-card">
+                    <div class="card-top">
+                        <div class="program-icon icon-yellow">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                        </div>
+                        <span class="status-badge badge-open">Open</span>
+                    </div>
+
+                    <p class="program-type">Kaderisasi Lanjutan</p>
+                    <h3>MOK</h3>
+                    <p>Masa Orientasi Kader. Penempaan kapasitas intelektual dan penguatan ideologi Aswaja bagi kader berkelanjutan.</p>
+
+                    <div class="card-footer">
+                        <span>Daftar Sekarang</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+
+                <a href="live-in.html" class="program-card">
+                    <div class="card-top">
+                        <div class="program-icon icon-green">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                        <span class="status-badge badge-muted">Coming Soon</span>
+                    </div>
+
+                    <p class="program-type">Pengabdian Sosial</p>
+                    <h3>Live In</h3>
+                    <p>Penyatuan diri dengan masyarakat. Mengabdi dan mengaplikasikan ilmu psikologi secara langsung di lingkungan sosial.</p>
+
+                    <div class="card-footer">
+                        <span>Lihat Detail</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+            </div>
+
+            <div class="info-strip">
+                <div class="info-box">
+                    <h3>Catatan Pendaftaran</h3>
+                    <p>Program dengan status terbuka dapat langsung diakses melalui kartu terkait. Program lain tetap ditampilkan sebagai arsip agenda dan informasi awal.</p>
+                </div>
+                <div class="info-box">
+                    <h3>PMII KOMFAPSI</h3>
+                    <p>Agenda disusun untuk memperkuat kaderisasi, tradisi keilmuan, dan kontribusi sosial Komisariat Fakultas Psikologi.</p>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-10 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 text-center">
+    <footer class="footer mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-3">
+                <div class="footer-logo">
+                    <img src="Untitled design.png" alt="Logo PMII" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <span class="footer-brand">PMII KOMFAPSI</span>
+                    <small>Komisariat Fakultas Psikologi</small>
+                </div>
+            </div>
             <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi.</p>
         </div>
     </footer>
