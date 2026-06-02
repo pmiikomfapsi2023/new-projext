@@ -400,10 +400,9 @@ body.dark-mode .section-pill {
     line-height: 0.92;
     letter-spacing: -0.075em;
 }
-
 .hero-title span {
     display: block;
-    color: rgba(15, 23, 42, 0.08);
+    color: rgba(15, 23, 42, 0.18);
 }
 
 body.dark-mode .hero-title span {
