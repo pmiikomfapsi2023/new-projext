@@ -1,4 +1,114 @@
-<!DOCTYPE html>
+<script>
+        // Masukkan URL Google Web App (Apps Script) kamu di sini
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby-jq9Ym_zKdUQTX6Mory28kN0FXl4wlIFeYplG56Ncl24rHxsKHmHxzC4wARFOU8Ikrg/exec';
+        
+        const form = document.getElementById('formMok');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const fileInput = document.getElementById('file-upload');
+        const fileNameDisplay = document.getElementById('file-name-display');
+        const fileInfoDisplay = document.getElementById('file-info-display');
+        const uploadContainer = document.getElementById('upload-container');
+        const uploadIcon = document.getElementById('upload-icon');
+
+        // Deteksi saat file dipilih
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                const file = this.files[0];
+                
+                if (file.size > 2097152) {
+                    alert('Ukuran file terlalu besar! Maksimal 2MB. Silakan kompres foto Anda.');
+                    this.value = '';
+                    fileNameDisplay.textContent = 'Gagal: File > 2MB (Pilih ulang)';
+                    fileNameDisplay.className = 'text-red-500 font-bold hover:text-red-600';
+                    uploadContainer.classList.replace('border-green-400', 'border-red-400');
+                    uploadContainer.classList.remove('bg-green-50');
+                    uploadIcon.classList.replace('text-green-500', 'text-red-400');
+                    return;
+                }
+
+                fileNameDisplay.textContent = '✔️ File Terpilih: ' + file.name;
+                fileNameDisplay.className = 'text-green-600 font-bold hover:text-green-700';
+                const fileSizeKB = (file.size / 1024).toFixed(1);
+                fileInfoDisplay.textContent = 'Ukuran: ' + fileSizeKB + ' KB - Siap dikirim';
+                uploadContainer.classList.remove('border-gray-300', 'border-red-400');
+                uploadContainer.classList.add('border-green-400', 'bg-green-50');
+                uploadIcon.classList.replace('text-gray-400', 'text-green-500');
+                uploadIcon.classList.replace('text-red-400', 'text-green-500');
+            }
+        });
+
+        const getBase64 = (file) => new Promise((resolve, reject) => {
+            if (!file) return resolve(null);
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        // Proses Submit Form
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sedang Mengirim... Mohon Tunggu';
+            submitBtn.disabled = true;
+            submitBtn.classList.replace('bg-yellow-500', 'bg-gray-400');
+
+            try {
+                const file = fileInput.files[0];
+                const fileData = await getBase64(file);
+
+                const formData = {
+                    nama: document.getElementById('nama').value,
+                    kelas: document.getElementById('kelas').value,
+                    angkatan: document.getElementById('angkatan').value,
+                    whatsapp: document.getElementById('whatsapp').value,
+                    fileName: file ? file.name : '',
+                    fileData: fileData
+                };
+
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    }
+                });
+
+                // Membaca text mentah terlebih dahulu untuk menghindari crash jika respon dari Google berupa HTML Error
+                const responseText = await response.text();
+                
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (jsonError) {
+                    console.error("Respon server bukan JSON:", responseText);
+                    throw new Error("Server mengirim respon tidak valid (Bukan JSON). Periksa kembali deployment Apps Script Anda.");
+                }
+                
+                if (result.result === 'success') {
+                    alert('Pendaftaran MOK Berhasil! Terima kasih Sahabat/i.');
+                    form.reset();
+                    fileNameDisplay.textContent = 'Unggah struk / tangkapan layar';
+                    fileNameDisplay.className = 'text-yellow-600 hover:text-yellow-500';
+                    fileInfoDisplay.textContent = 'PNG, JPG, JPEG, atau PDF hingga 2MB';
+                    uploadContainer.classList.remove('border-green-400', 'bg-green-50');
+                    uploadContainer.classList.add('border-gray-300');
+                    uploadIcon.classList.replace('text-green-500', 'text-gray-400');
+                } else {
+                    throw new Error(result.error || "Terjadi kesalahan di sistem Google Script.");
+                }
+            } catch (error) {
+                console.error('Detail Error:', error);
+                // Menampilkan error yang lebih spesifik agar mudah di-debug
+                alert('Gagal Mengirim Data!\n\nDetail: ' + error.message);
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.classList.replace('bg-gray-400', 'bg-yellow-500');
+            }
+        });
+    </script><!DOCTYPE html>
 <html lang="id" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
