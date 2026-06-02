@@ -401,13 +401,13 @@ body.dark-mode .section-pill {
     letter-spacing: -0.075em;
 }
 
-.hero-title span {
+..hero-title span {
     display: block;
-    color: rgba(15, 23, 42, 0.22);
+    color: rgba(15, 23, 42, 0.45) !important;
 }
 
 body.dark-mode .hero-title span {
-    color: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.22) !important;
 }
 
 .hero-title strong {
