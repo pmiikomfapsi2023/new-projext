@@ -18,7 +18,6 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
 
-    <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
             <a href="proker.html" class="flex items-center gap-2 text-gray-600 hover:text-pmii-blue transition group">
@@ -30,7 +29,6 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
     <section class="pt-32 pb-8 bg-white border-b border-gray-200">
         <div class="max-w-3xl mx-auto px-6 text-center">
             <span class="bg-yellow-100 text-yellow-800 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kaderisasi Tahap II</span>
@@ -39,11 +37,9 @@
         </div>
     </section>
 
-    <!-- Form Main Content -->
     <main class="py-12 max-w-3xl mx-auto px-6 w-full flex-grow">
         <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
             
-            <!-- Info Box Pembayaran HTM -->
             <div class="mb-8 p-4 bg-yellow-50 border border-yellow-200 rounded-2xl flex items-start gap-3">
                 <svg class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -59,17 +55,14 @@
                 </div>
             </div>
             
-            <!-- Form dimodifikasi ID-nya untuk handling Javascript -->
             <form id="formMok" class="space-y-6">
                 
-                <!-- Nama Lengkap -->
                 <div>
                     <label for="nama" class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
                     <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap sesuai KTM"
                         class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all">
                 </div>
 
-                <!-- Kelas & Angkatan -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="kelas" class="block text-sm font-semibold text-gray-700 mb-2">Kelas</label>
@@ -89,34 +82,31 @@
                     </div>
                 </div>
 
-                <!-- Nomor Telepon -->
                 <div>
                     <label for="whatsapp" class="block text-sm font-semibold text-gray-700 mb-2">Nomor Telepon / WhatsApp</label>
                     <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Contoh: 081234567xxx"
                         class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all">
                 </div>
 
-                <!-- Upload Bukti HTM -->
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Bukti Transfer HTM (5k)</label>
-                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-yellow-500 transition-colors">
+                    <div id="upload-container" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-yellow-500 transition-colors bg-white">
                         <div class="space-y-1 text-center">
-                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <svg id="upload-icon" class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                                 <path d="M28 8H12a4 4 0 00-4 4v20a4 4 0 004 4h16a4 4 0 004-4V12a4 4 0 00-4-4z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M32 16v16M16 24h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <div class="flex text-sm text-gray-600 justify-center">
-                                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-semibold text-yellow-600 hover:text-yellow-500 focus-within:outline-none">
-                                    <span>Unggah struk / tangkapan layar</span>
+                                <label for="file-upload" class="relative cursor-pointer rounded-md font-semibold focus-within:outline-none">
+                                    <span id="file-name-display" class="text-yellow-600 hover:text-yellow-500">Unggah struk / tangkapan layar</span>
                                     <input id="file-upload" name="file-upload" type="file" required class="sr-only" accept="image/*,.pdf">
                                 </label>
                             </div>
-                            <p class="text-xs text-gray-500">PNG, JPG, JPEG, atau PDF hingga 2MB</p>
+                            <p id="file-info-display" class="text-xs text-gray-500">PNG, JPG, JPEG, atau PDF hingga 2MB</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tombol Submit -->
                 <div class="pt-4">
                     <button type="submit" 
                         class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
@@ -128,20 +118,59 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-10 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi.</p>
         </div>
     </footer>
 
-    <!-- JavaScript Antarmuka ke Google Sheet -->
     <script>
         // Masukkan URL Google Web App (Apps Script) kamu di sini
         const scriptURL = 'https://script.google.com/macros/s/AKfycby-jq9Ym_zKdUQTX6Mory28kN0FXl4wlIFeYplG56Ncl24rHxsKHmHxzC4wARFOU8Ikrg/exec';
+        
         const form = document.getElementById('formMok');
         const submitBtn = form.querySelector('button[type="submit"]');
+        const fileInput = document.getElementById('file-upload');
+        const fileNameDisplay = document.getElementById('file-name-display');
+        const fileInfoDisplay = document.getElementById('file-info-display');
+        const uploadContainer = document.getElementById('upload-container');
+        const uploadIcon = document.getElementById('upload-icon');
 
+        // FITUR BARU: Deteksi saat file dipilih
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                const file = this.files[0];
+                
+                // Validasi ukuran maksimal 2MB (2 * 1024 * 1024 bytes)
+                if (file.size > 2097152) {
+                    alert('Ukuran file terlalu besar! Maksimal 2MB. Silakan kompres foto Anda.');
+                    this.value = ''; // Kosongkan file
+                    
+                    // Kembalikan ke tampilan awal dengan warna merah peringatan
+                    fileNameDisplay.textContent = 'Gagal: File > 2MB (Pilih ulang)';
+                    fileNameDisplay.className = 'text-red-500 font-bold hover:text-red-600';
+                    uploadContainer.classList.replace('border-green-400', 'border-red-400');
+                    uploadContainer.classList.remove('bg-green-50');
+                    uploadIcon.classList.replace('text-green-500', 'text-red-400');
+                    return;
+                }
+
+                // Jika file sukses dipilih dan ukuran aman, ubah UI jadi warna hijau
+                fileNameDisplay.textContent = '✔️ File Terpilih: ' + file.name;
+                fileNameDisplay.className = 'text-green-600 font-bold hover:text-green-700';
+                
+                const fileSizeKB = (file.size / 1024).toFixed(1);
+                fileInfoDisplay.textContent = 'Ukuran: ' + fileSizeKB + ' KB - Siap dikirim';
+                
+                // Ubah border dan background kotak
+                uploadContainer.classList.remove('border-gray-300', 'border-red-400');
+                uploadContainer.classList.add('border-green-400', 'bg-green-50');
+                uploadIcon.classList.replace('text-gray-400', 'text-green-500');
+                uploadIcon.classList.replace('text-red-400', 'text-green-500');
+            }
+        });
+
+        // Konversi file ke bentuk teks Base64 untuk dikirim
         const getBase64 = (file) => new Promise((resolve, reject) => {
             if (!file) return resolve(null);
             const reader = new FileReader();
@@ -150,20 +179,19 @@
             reader.onerror = error => reject(error);
         });
 
+        // Proses Submit Form
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Sedang Mengirim...';
+            submitBtn.innerHTML = 'Sedang Mengirim... Mohon Tunggu';
             submitBtn.disabled = true;
             submitBtn.classList.replace('bg-yellow-500', 'bg-gray-400');
 
             try {
-                const fileInput = document.getElementById('file-upload');
                 const file = fileInput.files[0];
                 const fileData = await getBase64(file);
 
-                // Menyesuaikan objek data dengan struktur input baru
                 const formData = {
                     nama: document.getElementById('nama').value,
                     kelas: document.getElementById('kelas').value,
@@ -186,12 +214,20 @@
                 if (result.result === 'success') {
                     alert('Pendaftaran MOK Berhasil! Terima kasih Sahabat/i.');
                     form.reset();
+                    
+                    // Kembalikan tampilan kotak upload ke semula setelah berhasil kirim
+                    fileNameDisplay.textContent = 'Unggah struk / tangkapan layar';
+                    fileNameDisplay.className = 'text-yellow-600 hover:text-yellow-500';
+                    fileInfoDisplay.textContent = 'PNG, JPG, JPEG, atau PDF hingga 2MB';
+                    uploadContainer.classList.remove('border-green-400', 'bg-green-50');
+                    uploadContainer.classList.add('border-gray-300');
+                    uploadIcon.classList.replace('text-green-500', 'text-gray-400');
                 } else {
                     throw new Error(result.error);
                 }
             } catch (error) {
                 console.error('Error!', error.message);
-                alert('Terjadi kesalahan saat mengirim data. Pastikan ukuran file tidak melebihi 2MB.');
+                alert('Terjadi kesalahan saat mengirim data. Pastikan internet stabil.');
             } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
