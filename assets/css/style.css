@@ -647,7 +647,7 @@ body.dark-mode .hero-info-card {
 .profile-ring {
     position: absolute;
     left: 50%;
-    top: 38%;
+    top: 36%;
     transform: translate(-50%, -50%);
     border-radius: 999px;
     pointer-events: none;
@@ -671,7 +671,7 @@ body.dark-mode .hero-info-card {
     height: 165px;
     border-radius: 999px;
     left: 50%;
-    top: 38%;
+    top: 36%;
     transform: translate(-50%, -50%);
     background: rgba(255, 215, 0, 0.18);
     filter: blur(16px);
@@ -686,7 +686,7 @@ body.dark-mode .hero-info-card {
     position: absolute;
     z-index: 3;
     left: 50%;
-    bottom: 0;
+    bottom: 18px;
     transform: translateX(-50%);
     height: 520px;
     width: auto;
