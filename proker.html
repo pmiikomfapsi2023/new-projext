@@ -325,13 +325,85 @@
         }
 
         .program-card.open-card {
-            border-color: rgba(255, 215, 0, 0.58);
-            box-shadow: 0 24px 65px rgba(255, 215, 0, 0.18);
+            border-color: rgba(255, 215, 0, 0.70);
+            box-shadow: 0 24px 65px rgba(255, 215, 0, 0.22);
+            animation: openCardGlow 2.8s ease-in-out infinite;
         }
 
         .program-card.open-card::before {
             opacity: 1;
-            background: radial-gradient(circle at 86% 12%, rgba(255, 215, 0, 0.14), transparent 30%);
+            background:
+                radial-gradient(circle at 86% 12%, rgba(255, 215, 0, 0.18), transparent 30%),
+                linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.55) 45%, transparent 60%);
+            background-size: auto, 240% 100%;
+            animation: openCardShine 3.8s ease-in-out infinite;
+        }
+
+        .program-card.open-card::after {
+            content: "Sedang Dibuka";
+            position: absolute;
+            right: -42px;
+            top: 26px;
+            z-index: 3;
+            width: 170px;
+            text-align: center;
+            transform: rotate(35deg);
+            background: var(--pmii-blue);
+            color: #ffffff;
+            font-size: 0.64rem;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.42rem 0;
+            box-shadow: 0 12px 28px rgba(0, 51, 153, 0.24);
+        }
+
+        @keyframes openCardGlow {
+            0%, 100% {
+                box-shadow:
+                    0 24px 65px rgba(255, 215, 0, 0.18),
+                    0 0 0 0 rgba(255, 215, 0, 0.34);
+            }
+
+            50% {
+                box-shadow:
+                    0 30px 80px rgba(255, 215, 0, 0.36),
+                    0 0 0 7px rgba(255, 215, 0, 0.10);
+            }
+        }
+
+        @keyframes openCardShine {
+            0%, 42% {
+                background-position: center, 180% 0;
+            }
+
+            68%, 100% {
+                background-position: center, -60% 0;
+            }
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 22px rgba(255, 215, 0, 0.24);
+            }
+
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 14px 34px rgba(255, 215, 0, 0.55);
+            }
+        }
+
+        @keyframes liveDotPulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.38;
+                transform: scale(0.72);
+            }
         }
 
         .card-top {
@@ -390,9 +462,24 @@
         }
 
         .badge-open {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.42rem;
             background: var(--pmii-yellow);
             color: var(--pmii-dark);
             box-shadow: 0 10px 22px rgba(255, 215, 0, 0.28);
+            animation: badgePulse 1.6s ease-in-out infinite;
+        }
+
+        .badge-open::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #16a34a;
+            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.16);
+            animation: liveDotPulse 1.2s ease-in-out infinite;
         }
 
         .program-type {
