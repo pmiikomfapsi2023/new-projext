@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran MOK - PMII KOMFAPSI</title>
+    <link rel="icon" type="image/png" href="Untitled design.png">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-pmii-blue { background-color: #003399; }
+        .text-pmii-blue { color: #003399; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 w-full z-50 glass-nav border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="proker.html" class="flex items-center gap-2 text-gray-600 hover:text-pmii-blue transition group">
+                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span class="font-semibold text-sm md:text-base">Kembali ke Proker</span>
+            </a>
+            <div class="font-bold text-gray-900 text-lg tracking-widest uppercase hidden md:block">Formulir Pendaftaran</div>
+            <div class="w-24 hidden md:block"></div> 
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-32 pb-8 bg-white border-b border-gray-200">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <span class="bg-yellow-100 text-yellow-800 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kaderisasi Tahap II</span>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-3 mb-2">Masa Orientasi Kader (MOK)</h1>
+            <p class="text-gray-500 text-sm md:text-base">Silakan lengkapi data diri Anda dengan benar untuk mendaftar sebagai peserta MOK PMII Komisariat Fakultas Psikologi.</p>
+        </div>
+    </section>
+
+    <!-- Form Main Content -->
+    <main class="py-12 max-w-3xl mx-auto px-6 w-full flex-grow">
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+            
+            <!-- Info Box Pembayaran HTM -->
+            <div class="mb-8 p-4 bg-yellow-50 border border-yellow-200 rounded-2xl flex items-start gap-3">
+                <svg class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                    <h4 class="font-bold text-yellow-900 text-sm md:text-base">Informasi Pembayaran HTM (5k)</h4>
+                    <p class="text-yellow-700 text-xs md:text-sm mt-1">
+                        Sebelum mengisi formulir, pastikan Anda telah melakukan transfer sebesar <strong>Rp 5.000</strong> ke nomor berikut:<br>
+                        <span class="inline-block mt-1 bg-white px-2 py-1 rounded border border-yellow-300 font-mono text-gray-900">
+                            <strong>DANA:</strong> 081288467782 (a.n. Farah)
+                        </span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Form dimodifikasi ID-nya untuk handling Javascript -->
+            <form id="formMok" class="space-y-6">
+                
+                <!-- Nama Lengkap -->
+                <div>
+                    <label for="nama" class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap sesuai KTM"
+                        class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all">
+                </div>
+
+                <!-- Kelas & Angkatan -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="kelas" class="block text-sm font-semibold text-gray-700 mb-2">Kelas</label>
+                        <input type="text" id="kelas" name="kelas" required placeholder="Contoh: Psikologi A / Kelas B"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all">
+                    </div>
+                    <div>
+                        <label for="angkatan" class="block text-sm font-semibold text-gray-700 mb-2">Angkatan Kuliah</label>
+                        <select id="angkatan" name="angkatan" required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all">
+                            <option value="" disabled selected>Pilih Angkatan</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Nomor Telepon -->
+                <div>
+                    <label for="whatsapp" class="block text-sm font-semibold text-gray-700 mb-2">Nomor Telepon / WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Contoh: 081234567xxx"
+                        class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all">
+                </div>
+
+                <!-- Upload Bukti HTM -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Bukti Transfer HTM (5k)</label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-yellow-500 transition-colors">
+                        <div class="space-y-1 text-center">
+                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M28 8H12a4 4 0 00-4 4v20a4 4 0 004 4h16a4 4 0 004-4V12a4 4 0 00-4-4z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M32 16v16M16 24h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="flex text-sm text-gray-600 justify-center">
+                                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-semibold text-yellow-600 hover:text-yellow-500 focus-within:outline-none">
+                                    <span>Unggah struk / tangkapan layar</span>
+                                    <input id="file-upload" name="file-upload" type="file" required class="sr-only" accept="image/*,.pdf">
+                                </label>
+                            </div>
+                            <p class="text-xs text-gray-500">PNG, JPG, JPEG, atau PDF hingga 2MB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div class="pt-4">
+                    <button type="submit" 
+                        class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                        Kirim Pendaftaran
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm">&copy; 2026 PMII Cabang Ciputat - Komisariat Fakultas Psikologi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Antarmuka ke Google Sheet -->
+    <script>
+        // Masukkan URL Google Web App (Apps Script) kamu di sini
+        const scriptURL = 'PASTE_URL_WEB_APP_DI_SINI';
+        const form = document.getElementById('formMok');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        const getBase64 = (file) => new Promise((resolve, reject) => {
+            if (!file) return resolve(null);
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sedang Mengirim...';
+            submitBtn.disabled = true;
+            submitBtn.classList.replace('bg-yellow-500', 'bg-gray-400');
+
+            try {
+                const fileInput = document.getElementById('file-upload');
+                const file = fileInput.files[0];
+                const fileData = await getBase64(file);
+
+                // Menyesuaikan objek data dengan struktur input baru
+                const formData = {
+                    nama: document.getElementById('nama').value,
+                    kelas: document.getElementById('kelas').value,
+                    angkatan: document.getElementById('angkatan').value,
+                    whatsapp: document.getElementById('whatsapp').value,
+                    fileName: file ? file.name : '',
+                    fileData: fileData
+                };
+
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    }
+                });
+
+                const result = await response.json();
+                
+                if (result.result === 'success') {
+                    alert('Pendaftaran MOK Berhasil! Terima kasih Sahabat/i.');
+                    form.reset();
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Error!', error.message);
+                alert('Terjadi kesalahan saat mengirim data. Pastikan ukuran file tidak melebihi 2MB.');
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.classList.replace('bg-gray-400', 'bg-yellow-500');
+            }
+        });
+    </script>
+
+</body>
+</html>
