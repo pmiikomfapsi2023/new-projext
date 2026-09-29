@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id" style="scroll-behavior: smooth;">
 <head>
@@ -27,300 +28,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css?v=10">
-
-    <style>
-        /* CSS Tambahan untuk Tampilan Profesional khas PMII */
-        :root {
-            --pmii-blue-dark: #002147;
-            --pmii-blue: #004080;
-            --pmii-blue-light: #0B5ED7;
-            --pmii-yellow: #F59E0B;
-            --pmii-yellow-gold: #D97706;
-            --pmii-yellow-light: #FEF3C7;
-            --pmii-bg-light: #F8FAFC;
-            --pmii-text-main: #0F172A;
-            --pmii-text-muted: #475569;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--pmii-bg-light);
-            color: var(--pmii-text-main);
-        }
-
-        /* Navbar Professional Glassmorphism */
-        .site-nav {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 33, 71, 0.08);
-            box-shadow: 0 4px 20px -2px rgba(0, 33, 71, 0.05);
-        }
-
-        .brand-title {
-            font-weight: 800;
-            color: var(--pmii-blue-dark);
-            letter-spacing: -0.02em;
-        }
-
-        .brand-subtitle {
-            color: var(--pmii-yellow-gold);
-            font-weight: 600;
-            font-size: 0.825rem;
-        }
-
-        .nav-link {
-            font-weight: 600;
-            color: var(--pmii-text-muted);
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--pmii-blue-light);
-        }
-
-        .portal-btn {
-            background: linear-gradient(135deg, var(--pmii-blue) 0%, var(--pmii-blue-dark) 100%);
-            color: #ffffff !important;
-            font-weight: 600;
-            padding: 0.6rem 1.4rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 14px rgba(0, 64, 128, 0.25);
-            transition: all 0.3s ease;
-        }
-
-        .portal-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 64, 128, 0.35);
-            background: linear-gradient(135deg, var(--pmii-blue-light) 0%, var(--pmii-blue) 100%);
-        }
-
-        /* Hero Section Styling */
-        .hero-section {
-            position: relative;
-            padding-top: 8rem;
-            padding-bottom: 6rem;
-            background: radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(0, 64, 128, 0.06) 0%, transparent 50%),
-                        var(--pmii-bg-light);
-        }
-
-        .section-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.9rem;
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: var(--pmii-yellow-gold);
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .section-pill span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--pmii-yellow);
-            box-shadow: 0 0 8px var(--pmii-yellow);
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            line-height: 1.15;
-            font-weight: 900;
-            color: var(--pmii-blue-dark);
-            margin-top: 1.25rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .hero-muted-word {
-            color: var(--pmii-text-muted);
-            font-weight: 700;
-        }
-
-        .hero-title strong {
-            color: var(--pmii-blue-dark);
-        }
-
-        .hero-title em {
-            color: var(--pmii-yellow-gold);
-            font-style: normal;
-        }
-
-        .hero-description {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: var(--pmii-text-muted);
-            max-width: 36rem;
-        }
-
-        .btn-yellow {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-            color: #ffffff !important;
-            font-weight: 700;
-            padding: 0.85rem 1.75rem;
-            border-radius: 0.75rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 10px 20px -5px rgba(217, 119, 6, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-yellow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 24px -4px rgba(217, 119, 6, 0.5);
-        }
-
-        .btn-soft {
-            background: #FFFFFF;
-            color: var(--pmii-blue-dark) !important;
-            border: 1px solid rgba(0, 64, 128, 0.15);
-            font-weight: 600;
-            padding: 0.85rem 1.75rem;
-            border-radius: 0.75rem;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-        }
-
-        .btn-soft:hover {
-            border-color: var(--pmii-blue);
-            background: rgba(0, 64, 128, 0.03);
-            transform: translateY(-2px);
-        }
-
-        /* Stat Cards */
-        .stat-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 64, 128, 0.08);
-            padding: 1.25rem 1rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 20px -4px rgba(0, 33, 71, 0.06);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .stat-card:hover {
-            border-color: rgba(245, 158, 11, 0.4);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(0, 33, 71, 0.1);
-        }
-
-        .stat-card h3 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--pmii-blue-dark);
-            line-height: 1.2;
-        }
-
-        .stat-card p {
-            font-size: 0.875rem;
-            color: var(--pmii-text-muted);
-            font-weight: 500;
-            margin-top: 0.25rem;
-        }
-
-        .stat-card:empty {
-            display: none;
-        }
-
-        /* Profil Section Card */
-        .profile-card {
-            background: linear-gradient(135deg, rgba(0, 33, 71, 0.02) 0%, rgba(245, 158, 11, 0.03) 100%);
-            border: 1px solid rgba(0, 64, 128, 0.1);
-            border-radius: 1.5rem;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 15px 35px -10px rgba(0, 33, 71, 0.07);
-        }
-
-        .profile-person-img {
-            border-radius: 1.25rem;
-            box-shadow: 0 12px 30px rgba(0, 33, 71, 0.15);
-            border: 4px solid #FFFFFF;
-        }
-
-        .profile-label {
-            color: var(--pmii-yellow-gold);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Value Cards */
-        .value-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 64, 128, 0.08);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            box-shadow: 0 8px 24px -4px rgba(0, 33, 71, 0.04);
-            transition: all 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(245, 158, 11, 0.4);
-            box-shadow: 0 16px 32px -6px rgba(0, 33, 71, 0.08);
-        }
-
-        .value-icon {
-            width: 3.25rem;
-            height: 3.25rem;
-            border-radius: 0.875rem;
-            background: linear-gradient(135deg, rgba(0, 64, 128, 0.1) 0%, rgba(245, 158, 11, 0.15) 100%);
-            color: var(--pmii-blue-dark);
-        }
-
-        /* News Cards */
-        .news-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 64, 128, 0.08);
-            border-radius: 1.25rem;
-            overflow: hidden;
-            box-shadow: 0 8px 24px -4px rgba(0, 33, 71, 0.04);
-            transition: all 0.3s ease;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 32px -6px rgba(0, 33, 71, 0.1);
-            border-color: rgba(0, 64, 128, 0.2);
-        }
-
-        .news-category {
-            background: var(--pmii-yellow-gold);
-            color: #FFFFFF;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-        }
-
-        /* Footer */
-        .site-footer {
-            background: var(--pmii-blue-dark);
-            color: #FFFFFF;
-            border-top: 4px solid var(--pmii-yellow);
-        }
-
-        .footer-brand {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #FFFFFF;
-        }
-
-        /* Chat Widget Button */
-        .chat-toggle-btn {
-            background: linear-gradient(135deg, var(--pmii-blue) 0%, var(--pmii-blue-dark) 100%);
-            border: 2px solid var(--pmii-yellow);
-            color: #FFFFFF;
-            box-shadow: 0 10px 25px rgba(0, 33, 71, 0.3);
-        }
-    </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 antialiased transition-colors duration-300">
@@ -433,6 +140,8 @@
                         <p>Ruang Publikasi</p>
                     </div>
                     <div class="stat-card">
+                        <h3>AI</h3>
+                        <p>Asisten Digital</p>
                     </div>
                 </div>
             </div>
@@ -443,6 +152,7 @@
                 <img src="Untitled design.png" 
                      alt="Logo PMII Komfapsi" 
                      class="hero-logo">
+                </div>
             </div>
         </div>
     </section>
@@ -602,11 +312,11 @@
             <div class="chat-header">
                 <div class="flex items-center gap-3">
                     <div class="chat-avatar">
-                        <img src="Untitled design.png" alt="Asisten" class="w-full h-full object-contain">
+                        <img src="Untitled design.png" alt="AI" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <h4>Asisten Virtual</h4>
-                        <p>Online | KOMFAPSI</p>
+                        <p>Online | AI Komfapsi</p>
                     </div>
                 </div>
                 <button id="close-chat" class="close-chat-btn" aria-label="Tutup chat">
@@ -615,7 +325,7 @@
             </div>
 
             <div id="chat-content" class="chat-content">
-                <div class="message-bot">Selamat datang, Sahabat! Saya adalah Asisten Virtual PMII Komfapsi. Ada yang bisa saya bantu terkait pergerakan atau keilmuan psikologi?</div>
+                <div class="message-bot">Selamat datang, Sahabat! Saya adalah Asisten AI PMII Komfapsi. Ada yang bisa saya bantu terkait pergerakan atau keilmuan psikologi?</div>
             </div>
 
             <div class="chat-form-area">
