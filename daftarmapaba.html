@@ -12,7 +12,6 @@
         .bg-pmii-yellow { background-color: #FFD700; }
         .text-pmii-dark { color: #001b5e; }
         .focus-ring-pmii:focus { border-color: #003399; ring-color: rgba(0, 51, 153, 0.2); }
-        /* Styling khusus untuk input file agar lebih rapi */
         input[type="file"]::file-selector-button {
             margin-right: 1rem;
             padding: 0.5rem 1rem;
@@ -240,34 +239,71 @@
     </footer>
 
     <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyZ-73qEB4FnYoQB7gg4duT_2LoVe6786mCBKHJKKb__9SiuHTlrbbGIpdxSx2Hv0oR/exec'
-    const form = document.getElementById('mapabaForm')
-    const btn = document.getElementById('submitBtn')
-    const msg = document.getElementById('successMessage')
+    // Link Web App Google Apps Script kamu
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwTIFjcNReBnE9sXwbB-K3NmKEN2k7OnVBsJAu14xFWS7ZQJKZg4u5GCVnBdh36qgk/exec';
 
-    form.addEventListener('submit', e => {
-        e.preventDefault()
-        btn.disabled = true
-        btn.innerHTML = "Sedang Mengirim Data & Berkas..."
+    const form = document.getElementById('mapabaForm');
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('successMessage');
 
-        // PERHATIAN:
-        // Jika skrip Apps Script tujuan (scriptURL) tidak didesain untuk menangani file upload secara spesifik (Base64), 
-        // file input (gambar/PDF) mungkin tidak akan tersimpan dengan benar di Google Sheets.
-        
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                btn.classList.add('hidden')
-                msg.classList.remove('hidden')
-                form.reset()
-                console.log('Success!', response)
-            })
-            .catch(error => {
-                btn.disabled = false
-                btn.innerHTML = "Kirim Pendaftaran"
-                alert('Waduh, ada error nih! Coba lagi ya Sahabat.')
-                console.error('Error!', error.message)
-            })
-    })
+    // Fungsi konversi file ke Base64
+    const fileToBase64 = file => new Promise((resolve, reject) => {
+        if (!file) resolve(null);
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve({ name: file.name, type: file.type, data: reader.result });
+        reader.onerror = error => reject(error);
+    });
+
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = "Sedang Mengunggah Data & Berkas...";
+
+        try {
+            const formData = new FormData(form);
+            const payload = {};
+
+            // Ambil semua input teks biasa
+            for (let [key, value] of formData.entries()) {
+                if (!(value instanceof File)) {
+                    payload[key] = value;
+                }
+            }
+
+            // Konversi file berkas ke Base64
+            const fileInputs = ['cv', 'bukti_ig_pmii', 'bukti_ig_vikasa', 'bukti_twibbon', 'bukti_form', 'bukti_bayar'];
+            for (let fieldName of fileInputs) {
+                const fileInput = form.querySelector(`[name="${fieldName}"]`);
+                if (fileInput && fileInput.files[0]) {
+                    payload[fieldName] = await fileToBase64(fileInput.files[0]);
+                } else {
+                    payload[fieldName] = null;
+                }
+            }
+
+            // Kirim payload JSON ke Google Apps Script
+            const response = await fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (result.result === 'success') {
+                btn.classList.add('hidden');
+                msg.classList.remove('hidden');
+                form.reset();
+            } else {
+                throw new Error(result.error || 'Gagal menyimpan data');
+            }
+        } catch (error) {
+            btn.disabled = false;
+            btn.innerHTML = "Kirim Pendaftaran";
+            alert('Waduh, ada kesalahan saat pengiriman data! Silakan coba lagi.');
+            console.error('Error!', error);
+        }
+    });
     </script>
 </body>
 </html>
